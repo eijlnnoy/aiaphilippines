@@ -2,673 +2,448 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>Insurance Pilipinas | Infinite Wealth Financials — AIA Philippines</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dancing+Script:wght@600;700&family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dancing+Script:wght@600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* ══════════════════════════════════════════
-   ROOT & RESET
-══════════════════════════════════════════ */
+/* ══ RESET & ROOT ══ */
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --navy:#0B1F3A;
-  --navy2:#122848;
-  --navy3:#1A3A6B;
-  --gold:#F5C400;
-  --gold2:#FFD740;
-  --gold3:#FFF3B0;
-  --red:#D32F2F;
-  --red2:#B71C1C;
-  --white:#FFFFFF;
-  --off:#F7F9FC;
-  --off2:#EEF2FA;
-  --gray:#5A6474;
-  --border:#E2E8F0;
+  --navy:#0B1F3A; --navy2:#122848; --navy3:#1A3A6B;
+  --gold:#F5C400; --gold2:#FFD740;
+  --red:#D32F2F; --red2:#B71C1C;
+  --white:#fff; --off:#F7F9FC; --off2:#EEF2FA;
+  --gray:#5A6474; --border:#E2E8F0;
   --shadow:0 2px 12px rgba(11,31,58,.08);
-  --shadow-lg:0 12px 40px rgba(11,31,58,.14);
+  --shadow-lg:0 8px 32px rgba(11,31,58,.14);
+  --r:10px; --r-lg:14px;
+  --pad:1.1rem;
 }
-html{scroll-behavior:smooth;font-size:16px}
+html{scroll-behavior:smooth}
 body{font-family:'DM Sans',sans-serif;background:var(--off);color:var(--navy);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto}
+a{text-decoration:none}
 
-/* ══════════════════════════════════════════
-   ANNOUNCEMENT BAR
-══════════════════════════════════════════ */
-.announce-bar{
-  background:var(--gold);
-  color:var(--navy);
-  text-align:center;
-  padding:.5rem 2rem;
-  font-size:.72rem;
-  font-weight:700;
-  letter-spacing:.1em;
-  text-transform:uppercase;
-  position:relative;
-  overflow:hidden;
-}
-.announce-bar::before{
-  content:'';position:absolute;inset:0;
-  background:repeating-linear-gradient(-60deg,transparent,transparent 20px,rgba(11,31,58,.04) 20px,rgba(11,31,58,.04) 21px);
-}
-.announce-bar span{position:relative}
-.announce-bar a{color:var(--navy);font-weight:900;text-decoration:underline;margin-left:.4rem}
+/* ══ ANNOUNCE BAR ══ */
+.announce{background:var(--gold);text-align:center;padding:.5rem 1rem;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;position:relative;overflow:hidden}
+.announce::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-60deg,transparent,transparent 16px,rgba(11,31,58,.04) 16px,rgba(11,31,58,.04) 17px)}
+.announce span{position:relative}
+.announce a{color:var(--navy);font-weight:900;text-decoration:underline;margin-left:.35rem}
 
-/* ══════════════════════════════════════════
-   TOP NAV
-══════════════════════════════════════════ */
-.nav-wrapper{position:sticky;top:0;z-index:500;background:var(--white);border-bottom:1px solid var(--border);box-shadow:var(--shadow)}
-.nav-top{
-  display:flex;align-items:center;
-  gap:1.5rem;padding:.9rem 3rem;
-  max-width:1400px;margin:0 auto;
-}
-.nav-logo{flex-shrink:0}
-.logo-main{font-family:'Bebas Neue',sans-serif;font-size:1.55rem;letter-spacing:.1em;color:var(--navy);line-height:1;display:block}
-.logo-main em{color:var(--gold);font-style:normal}
-.logo-sub{font-size:.5rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gray);display:block;margin-top:1px}
-.nav-search{
-  flex:1;max-width:420px;
-  display:flex;align-items:center;gap:.6rem;
-  background:var(--off);border:1.5px solid var(--border);
-  border-radius:8px;padding:.55rem 1rem;
-  transition:border-color .2s;
-}
-.nav-search:focus-within{border-color:var(--navy3)}
-.nav-search svg{flex-shrink:0;color:var(--gray)}
-.nav-search input{
-  border:none;background:transparent;outline:none;
-  font-size:.85rem;font-family:'DM Sans',sans-serif;
-  color:var(--navy);width:100%;
-}
-.nav-search input::placeholder{color:#A0AEC0}
-.nav-actions{display:flex;gap:.6rem;align-items:center;margin-left:auto}
-.btn-yt{
-  display:inline-flex;align-items:center;gap:.4rem;
-  padding:.48rem 1rem;background:var(--red);color:#fff;
-  font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
-  text-decoration:none;border-radius:6px;transition:all .2s;
-}
-.btn-yt:hover{background:var(--red2);transform:translateY(-1px)}
-.btn-quote{
-  padding:.48rem 1.1rem;background:var(--navy);color:var(--gold);
-  font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
-  text-decoration:none;border-radius:6px;transition:all .2s;display:inline-block;
-}
+/* ══ NAV ══ */
+.nav-wrapper{position:sticky;top:0;z-index:900;background:var(--white);border-bottom:1px solid var(--border);box-shadow:var(--shadow)}
+.nav-top{display:flex;align-items:center;justify-content:space-between;padding:.75rem var(--pad);gap:.8rem}
+.nav-logo .logo-main{font-family:'Bebas Neue',sans-serif;font-size:1.35rem;letter-spacing:.08em;color:var(--navy);display:block;line-height:1}
+.nav-logo .logo-main em{color:var(--gold);font-style:normal}
+.nav-logo .logo-sub{font-size:.48rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gray)}
+.nav-right-btns{display:flex;align-items:center;gap:.5rem}
+.btn-yt{display:inline-flex;align-items:center;gap:.35rem;padding:.45rem .85rem;background:var(--red);color:#fff;font-size:.65rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-radius:6px;transition:background .2s;white-space:nowrap}
+.btn-yt:hover{background:var(--red2)}
+.btn-quote{padding:.45rem .85rem;background:var(--navy);color:var(--gold);font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:6px;display:inline-block;white-space:nowrap;transition:background .2s}
 .btn-quote:hover{background:var(--navy3)}
-.btn-login{
-  padding:.48rem .9rem;border:1.5px solid var(--border);color:var(--gray);
-  font-size:.68rem;font-weight:600;letter-spacing:.04em;
-  text-decoration:none;border-radius:6px;transition:all .2s;display:inline-block;
-}
-.btn-login:hover{border-color:var(--navy);color:var(--navy)}
+/* hamburger */
+.hamburger{display:flex;flex-direction:column;gap:5px;cursor:pointer;padding:.4rem;background:none;border:none;-webkit-tap-highlight-color:transparent}
+.hamburger span{display:block;width:22px;height:2px;background:var(--navy);border-radius:2px;transition:all .3s}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
 
-/* NAV MENU */
-.nav-menu{
-  background:var(--navy);
-  display:flex;align-items:center;
-  border-bottom:3px solid var(--gold);
-}
-.nav-menu-inner{
-  display:flex;align-items:center;
-  max-width:1400px;width:100%;margin:0 auto;
-  padding:0 3rem;
-}
-.nav-menu a{
-  font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
-  color:rgba(255,255,255,.65);text-decoration:none;
-  padding:.72rem 1.1rem;border-bottom:3px solid transparent;margin-bottom:-3px;
-  transition:all .2s;white-space:nowrap;
-}
+/* Mobile drawer */
+.mobile-drawer{position:fixed;inset:0;z-index:800;pointer-events:none}
+.drawer-overlay{position:absolute;inset:0;background:rgba(11,31,58,.5);opacity:0;transition:opacity .3s}
+.drawer-panel{position:absolute;top:0;right:0;width:min(300px,85vw);height:100%;background:var(--white);transform:translateX(100%);transition:transform .3s;overflow-y:auto;padding:1.5rem var(--pad) 3rem}
+.mobile-drawer.open{pointer-events:auto}
+.mobile-drawer.open .drawer-overlay{opacity:1}
+.mobile-drawer.open .drawer-panel{transform:translateX(0)}
+.drawer-close{position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:1.4rem;cursor:pointer;color:var(--navy);padding:.3rem;line-height:1}
+.drawer-logo{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:.08em;color:var(--navy);margin-bottom:1.5rem;display:block}
+.drawer-logo em{color:var(--gold);font-style:normal}
+.drawer-nav{display:flex;flex-direction:column;gap:.2rem;margin-bottom:2rem}
+.drawer-nav a{display:block;padding:.85rem 1rem;font-size:.88rem;font-weight:600;color:var(--navy);border-radius:8px;transition:all .2s;border-left:3px solid transparent}
+.drawer-nav a:hover,.drawer-nav a.active{background:var(--off);border-left-color:var(--gold);color:var(--navy3)}
+.drawer-ctas{display:flex;flex-direction:column;gap:.6rem}
+.drawer-ctas a{display:block;padding:.88rem 1rem;text-align:center;border-radius:8px;font-size:.82rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.drawer-btn-primary{background:var(--navy);color:var(--gold)}
+.drawer-btn-yt{background:var(--red);color:#fff}
+
+/* Desktop nav menu strip — hidden on mobile */
+.nav-menu{background:var(--navy);border-bottom:3px solid var(--gold);display:none}
+.nav-menu-inner{display:flex;overflow-x:auto;padding:0 var(--pad);-webkit-overflow-scrolling:touch}
+.nav-menu-inner::-webkit-scrollbar{display:none}
+.nav-menu a{font-size:.68rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,.65);padding:.68rem 1rem;border-bottom:3px solid transparent;margin-bottom:-3px;transition:all .2s;white-space:nowrap;display:block}
 .nav-menu a:hover,.nav-menu a.active{color:var(--gold);border-bottom-color:var(--gold)}
+/* Desktop search — hidden on mobile */
+.nav-search{display:none}
 
-/* ══════════════════════════════════════════
-   HERO — DUAL BANNER
-══════════════════════════════════════════ */
-.hero{
-  background:var(--navy);
-  display:grid;grid-template-columns:1.1fr .9fr;
-  min-height:500px;
-  position:relative;overflow:hidden;
-  max-width:100%;
-}
-/* Left panel */
-.hero-left{
-  padding:5rem 3rem 4rem 3rem;
-  display:flex;flex-direction:column;justify-content:center;
-  position:relative;z-index:2;
-  max-width:700px;
-}
-.hero-eyebrow{
-  display:inline-flex;align-items:center;gap:.5rem;
-  background:rgba(245,196,0,.12);border:1px solid rgba(245,196,0,.25);
-  border-radius:20px;padding:.3rem .9rem;
-  font-size:.64rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--gold);margin-bottom:1.3rem;
-  opacity:0;animation:fadeUp .8s .1s both;
-  width:fit-content;
-}
-.hero-eyebrow span{width:6px;height:6px;border-radius:50%;background:var(--gold);display:block}
-.hero-h1{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:clamp(3rem,6vw,5.5rem);
-  line-height:.92;letter-spacing:.02em;
-  color:var(--white);
-  margin-bottom:.5rem;
-  opacity:0;animation:fadeUp .8s .22s both;
-}
+/* ══ HERO ══ */
+.hero{background:var(--navy);padding:3.5rem var(--pad) 3rem;position:relative;overflow:hidden;min-height:auto}
+/* arcs only on desktop */
+.hero-arc{display:none}
+.hero-badge-float{display:none}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:.45rem;background:rgba(245,196,0,.12);border:1px solid rgba(245,196,0,.22);border-radius:20px;padding:.28rem .8rem;font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1.1rem;opacity:0;animation:fadeUp .7s .1s both}
+.hero-eyebrow span{width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0}
+.hero-h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,14vw,6rem);line-height:.92;letter-spacing:.02em;color:#fff;margin-bottom:.3rem;opacity:0;animation:fadeUp .7s .2s both}
 .hero-h1 .accent{color:var(--gold)}
-.hero-divider{width:50px;height:3px;background:var(--gold);margin:.9rem 0;opacity:0;animation:fadeUp .8s .32s both}
-.hero-h2{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:clamp(1.4rem,3vw,2.4rem);
-  letter-spacing:.08em;color:rgba(255,255,255,.5);
-  margin-bottom:.6rem;
-  opacity:0;animation:fadeUp .8s .38s both;
-}
-.hero-script{
-  font-family:'Dancing Script',cursive;
-  font-size:clamp(1.2rem,2.5vw,1.9rem);
-  color:var(--gold);margin-bottom:1.8rem;
-  opacity:0;animation:fadeUp .8s .46s both;
-}
-.hero-pills{
-  display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:2rem;
-  opacity:0;animation:fadeUp .8s .54s both;
-}
-.hero-pill{
-  padding:.3rem .85rem;background:rgba(255,255,255,.07);
-  border:1px solid rgba(255,255,255,.15);border-radius:20px;
-  font-size:.68rem;font-weight:600;color:rgba(255,255,255,.7);
-}
-.hero-ctas{display:flex;gap:.7rem;flex-wrap:wrap;opacity:0;animation:fadeUp .8s .62s both}
-.cta-primary{
-  display:inline-flex;align-items:center;gap:.45rem;
-  padding:.85rem 1.8rem;background:var(--gold);color:var(--navy);
-  font-weight:700;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;
-  text-decoration:none;border-radius:8px;transition:all .25s;
-}
-.cta-primary:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 6px 20px rgba(245,196,0,.35)}
-.cta-yt{
-  display:inline-flex;align-items:center;gap:.45rem;
-  padding:.85rem 1.8rem;background:var(--red);color:#fff;
-  font-weight:700;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;
-  text-decoration:none;border-radius:8px;transition:all .25s;
-}
-.cta-yt:hover{background:var(--red2);transform:translateY(-2px)}
-.cta-ghost{
-  display:inline-flex;align-items:center;gap:.45rem;
-  padding:.85rem 1.8rem;border:2px solid rgba(255,255,255,.22);color:rgba(255,255,255,.8);
-  font-weight:600;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;
-  text-decoration:none;border-radius:8px;transition:all .25s;
-}
+.hero-divider{width:45px;height:3px;background:var(--gold);margin:.8rem 0;opacity:0;animation:fadeUp .7s .28s both}
+.hero-h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.1rem,5vw,2rem);letter-spacing:.06em;color:rgba(255,255,255,.5);margin-bottom:.5rem;opacity:0;animation:fadeUp .7s .34s both}
+.hero-script{font-family:'Dancing Script',cursive;font-size:clamp(1.1rem,4.5vw,1.7rem);color:var(--gold);margin-bottom:1.4rem;opacity:0;animation:fadeUp .7s .4s both}
+/* Mobile stats row */
+.hero-stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;margin-bottom:1.6rem;opacity:0;animation:fadeUp .7s .46s both}
+.hst-m{text-align:center;background:rgba(255,255,255,.05);border-radius:8px;padding:.6rem .2rem}
+.hst-m-n{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:var(--gold);line-height:1}
+.hst-m-l{font-size:.5rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.38);margin-top:.1rem}
+.hero-pills{display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:1.5rem;opacity:0;animation:fadeUp .7s .52s both}
+.hero-pill{padding:.28rem .7rem;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);border-radius:20px;font-size:.65rem;font-weight:600;color:rgba(255,255,255,.7)}
+.hero-ctas{display:flex;flex-direction:column;gap:.7rem;opacity:0;animation:fadeUp .7s .58s both}
+.cta-primary{display:flex;align-items:center;justify-content:center;gap:.45rem;padding:.92rem 1.5rem;background:var(--gold);color:var(--navy);font-weight:700;font-size:.8rem;letter-spacing:.07em;text-transform:uppercase;border-radius:8px;transition:all .25s;text-align:center}
+.cta-primary:hover{background:var(--gold2)}
+.cta-yt{display:flex;align-items:center;justify-content:center;gap:.45rem;padding:.92rem 1.5rem;background:var(--red);color:#fff;font-weight:700;font-size:.8rem;letter-spacing:.07em;text-transform:uppercase;border-radius:8px;transition:all .25s}
+.cta-yt:hover{background:var(--red2)}
+.cta-ghost{display:flex;align-items:center;justify-content:center;gap:.45rem;padding:.92rem 1.5rem;border:2px solid rgba(255,255,255,.22);color:rgba(255,255,255,.8);font-weight:600;font-size:.8rem;letter-spacing:.07em;text-transform:uppercase;border-radius:8px;transition:all .25s}
 .cta-ghost:hover{border-color:var(--gold);color:var(--gold)}
-/* Right panel */
-.hero-right{
-  position:relative;display:flex;flex-direction:column;
-  background:var(--navy2);
-  border-left:1px solid rgba(255,255,255,.06);
-}
-.hero-arc{position:absolute;border-radius:50%;pointer-events:none}
-.arc1{width:520px;height:520px;right:-100px;top:50%;transform:translateY(-50%);border:44px solid var(--gold);clip-path:ellipse(55% 100% at 100% 50%);opacity:.9}
-.arc2{width:520px;height:520px;right:-100px;top:50%;transform:translateY(-50%);border:30px solid var(--navy3);clip-path:ellipse(55% 100% at 100% 50%);margin:56px}
-.arc3{width:520px;height:520px;right:-100px;top:50%;transform:translateY(-50%);border:18px solid var(--gold);clip-path:ellipse(55% 100% at 100% 50%);margin:112px;opacity:.45}
-.hero-stats{
-  display:flex;flex-direction:column;justify-content:center;align-items:center;
-  height:100%;gap:2rem;padding:3rem 2.5rem;
-  position:relative;z-index:2;
-}
-.hstat{text-align:center}
-.hstat-n{font-family:'Bebas Neue',sans-serif;font-size:3rem;color:var(--gold);line-height:1}
-.hstat-l{font-size:.6rem;font-weight:600;text-transform:uppercase;letter-spacing:.14em;color:rgba(255,255,255,.4);margin-top:.2rem}
-.hstat-div{width:40px;height:1px;background:rgba(255,255,255,.12);margin:0 auto}
-.hero-badge-float{
-  position:absolute;bottom:2rem;right:2rem;
-  width:96px;height:96px;background:var(--gold);border-radius:50%;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;
-  box-shadow:0 0 0 12px rgba(245,196,0,.15);
-  animation:pulse 3s ease-in-out infinite;z-index:3;
-}
-.hero-badge-float span{font-family:'Bebas Neue',sans-serif;font-size:.85rem;color:var(--navy);letter-spacing:.04em;line-height:1.15;text-align:center}
-.hero-badge-float small{font-size:.44rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--navy2)}
-@keyframes pulse{0%,100%{box-shadow:0 0 0 12px rgba(245,196,0,.15)}50%{box-shadow:0 0 0 24px rgba(245,196,0,.06)}}
 
-/* ══════════════════════════════════════════
-   TICKER
-══════════════════════════════════════════ */
-.ticker{background:var(--gold);padding:.7rem 0;overflow:hidden;white-space:nowrap;border-top:2px solid rgba(11,31,58,.1)}
-.ticker-track{display:inline-flex;gap:2.5rem;animation:scrollLeft 30s linear infinite}
-.ticker-item{font-size:.67rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--navy);display:inline-flex;align-items:center;gap:.5rem}
+/* ══ TICKER ══ */
+.ticker{background:var(--gold);padding:.65rem 0;overflow:hidden;white-space:nowrap}
+.ticker-track{display:inline-flex;gap:2rem;animation:scrollLeft 25s linear infinite}
+.ticker-item{font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--navy);display:inline-flex;align-items:center;gap:.45rem}
 .tdot{width:4px;height:4px;border-radius:50%;background:var(--navy2);flex-shrink:0}
 @keyframes scrollLeft{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-/* ══════════════════════════════════════════
-   SECTION COMMONS
-══════════════════════════════════════════ */
-.section{padding:4.5rem 3rem;max-width:1400px;margin:0 auto}
-.section-full{padding:4.5rem 3rem}
-.section-full .section-inner{max-width:1400px;margin:0 auto}
-.sec-eyebrow{font-size:.62rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem}
-.sec-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.9rem,3.5vw,2.8rem);letter-spacing:.04em;color:var(--navy);line-height:1.05;margin-bottom:.7rem}
+/* ══ SECTION SHARED ══ */
+.sec{padding:3rem var(--pad)}
+.sec-eyebrow{font-size:.6rem;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem;display:block}
+.sec-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.75rem,7vw,2.8rem);letter-spacing:.04em;color:var(--navy);line-height:1.05;margin-bottom:.6rem}
 .sec-title .hl{color:var(--navy3)}
-.sec-body{font-size:.9rem;color:var(--gray);line-height:1.75;max-width:560px;margin-bottom:0}
+.sec-body{font-size:.88rem;color:var(--gray);line-height:1.75;margin-bottom:0}
 
-/* ══════════════════════════════════════════
-   SHOP BY CATEGORY — Inspired by PhilCare tiles
-══════════════════════════════════════════ */
+/* ══ CATEGORY TILES ══ */
 .cat-bg{background:var(--white)}
-.cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2.5rem}
-.cat-tile{
-  position:relative;border-radius:14px;overflow:hidden;
-  cursor:pointer;text-decoration:none;display:block;
-  transition:all .3s;border:2px solid transparent;
-}
-.cat-tile:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg)}
-.cat-tile-inner{
-  padding:2.2rem 1.5rem 1.8rem;
-  display:flex;flex-direction:column;align-items:flex-start;gap:.6rem;
-  min-height:200px;position:relative;
-}
-.ct-life{background:linear-gradient(145deg,#0B1F3A 0%,#1A3A6B 100%)}
-.ct-health{background:linear-gradient(145deg,#7B1FA2 0%,#4A148C 100%)}
-.ct-edu{background:linear-gradient(145deg,#1B5E20 0%,#2E7D32 100%)}
-.ct-wealth{background:linear-gradient(145deg,#E65100 0%,#BF360C 100%)}
-.ct-icon{font-size:2.4rem;margin-bottom:.2rem}
-.ct-name{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.06em;color:#fff;line-height:1.1}
-.ct-count{font-size:.68rem;font-weight:600;color:rgba(255,255,255,.55);letter-spacing:.06em}
-.ct-arrow{
-  position:absolute;bottom:1.2rem;right:1.2rem;
-  width:34px;height:34px;background:rgba(255,255,255,.12);
-  border-radius:50%;display:flex;align-items:center;justify-content:center;
-  font-size:.85rem;color:#fff;transition:all .3s;
-}
+.cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:1.8rem}
+.cat-tile{border-radius:var(--r-lg);overflow:hidden;cursor:pointer;display:block;transition:transform .25s,box-shadow .25s}
+.cat-tile:active{transform:scale(.97)}
+.cat-tile:hover{box-shadow:var(--shadow-lg)}
+.cat-tile-inner{padding:1.5rem 1.1rem 1.3rem;min-height:155px;position:relative;display:flex;flex-direction:column}
+.ct-life{background:linear-gradient(145deg,#0B1F3A,#1A3A6B)}
+.ct-health{background:linear-gradient(145deg,#7B1FA2,#4A148C)}
+.ct-edu{background:linear-gradient(145deg,#1B5E20,#2E7D32)}
+.ct-wealth{background:linear-gradient(145deg,#E65100,#BF360C)}
+.ct-icon{font-size:2rem;margin-bottom:.5rem}
+.ct-name{font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:.05em;color:#fff;line-height:1.1;margin-bottom:.2rem}
+.ct-count{font-size:.62rem;font-weight:500;color:rgba(255,255,255,.55)}
+.ct-arrow{position:absolute;bottom:.9rem;right:.9rem;width:30px;height:30px;background:rgba(255,255,255,.12);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.8rem;color:#fff;transition:background .25s}
 .cat-tile:hover .ct-arrow{background:var(--gold);color:var(--navy)}
-.ct-badge{
-  position:absolute;top:.8rem;right:.8rem;
-  padding:.2rem .65rem;border-radius:20px;
-  font-size:.58rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
-  background:var(--gold);color:var(--navy);
-}
+.ct-badge{position:absolute;top:.6rem;right:.6rem;padding:.18rem .55rem;border-radius:20px;font-size:.55rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:var(--gold);color:var(--navy)}
 
-/* ══════════════════════════════════════════
-   PRODUCT CARDS — Shopify-style
-══════════════════════════════════════════ */
+/* ══ PRODUCT CARDS ══ */
 .catalog-bg{background:var(--off)}
-.filter-bar{
-  display:flex;align-items:center;gap:.5rem;
-  margin-bottom:2rem;padding:.8rem 1.2rem;
-  background:var(--white);border:1px solid var(--border);
-  border-radius:10px;flex-wrap:wrap;
-}
-.filter-bar-label{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--gray);margin-right:.3rem}
-.ftab{
-  padding:.4rem 1rem;border-radius:20px;font-size:.7rem;font-weight:600;
-  letter-spacing:.08em;text-transform:uppercase;cursor:pointer;
-  border:1.5px solid var(--border);background:var(--white);color:var(--gray);
-  transition:all .2s;white-space:nowrap;
-}
-.ftab:hover{border-color:var(--navy);color:var(--navy)}
+.filter-scroll{display:flex;gap:.45rem;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:.4rem;margin-bottom:1.5rem;scrollbar-width:none}
+.filter-scroll::-webkit-scrollbar{display:none}
+.ftab{flex-shrink:0;padding:.5rem 1rem;border-radius:20px;font-size:.68rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;border:1.5px solid var(--border);background:var(--white);color:var(--gray);transition:all .2s;-webkit-tap-highlight-color:transparent}
 .ftab.active{background:var(--navy);color:var(--gold);border-color:var(--navy)}
-.sort-select{
-  margin-left:auto;padding:.4rem .8rem;font-size:.7rem;font-weight:600;
-  border:1.5px solid var(--border);border-radius:6px;color:var(--navy);
-  background:var(--white);outline:none;cursor:pointer;
-  font-family:'DM Sans',sans-serif;
-}
-.product-count{font-size:.72rem;color:var(--gray);font-weight:600;margin-left:.5rem}
-
-/* Product grid */
-.prod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.3rem}
-.prod-card{
-  background:var(--white);border-radius:14px;
-  border:1.5px solid var(--border);overflow:hidden;
-  display:flex;flex-direction:column;
-  transition:all .3s;position:relative;
-}
-.prod-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:var(--gold)}
-
-/* Wishlist / Quick View */
-.prod-card-actions{
-  position:absolute;top:.7rem;right:.7rem;z-index:5;
-  display:flex;flex-direction:column;gap:.3rem;
-  opacity:0;transition:opacity .25s;
-}
-.prod-card:hover .prod-card-actions{opacity:1}
-.pca-btn{
-  width:32px;height:32px;background:rgba(255,255,255,.95);
-  border-radius:50%;display:flex;align-items:center;justify-content:center;
-  cursor:pointer;border:none;box-shadow:0 2px 6px rgba(0,0,0,.12);
-  transition:all .2s;font-size:.85rem;
-}
-.pca-btn:hover{background:var(--navy);color:var(--gold)}
-
-/* Product image area */
-.prod-img{
-  aspect-ratio:3/2;position:relative;overflow:hidden;
-  display:flex;align-items:center;justify-content:center;
-  padding:1.5rem;
-}
-.prod-img-visual{
-  width:100%;height:100%;border-radius:10px;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:.5rem;position:relative;overflow:hidden;
-}
-/* Pill badges */
-.prod-badge{
-  position:absolute;top:.6rem;left:.6rem;z-index:2;
-  padding:.22rem .65rem;border-radius:20px;
-  font-size:.58rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
-}
+.prod-count-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.2rem}
+.prod-count-label{font-size:.72rem;color:var(--gray);font-weight:600}
+.prod-grid{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+.prod-card{background:var(--white);border-radius:var(--r-lg);border:1.5px solid var(--border);overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .25s,border-color .25s;position:relative}
+.prod-card:hover{box-shadow:var(--shadow-lg);border-color:var(--gold)}
+.prod-img{aspect-ratio:4/3;padding:.9rem;position:relative}
+.prod-img-visual{width:100%;height:100%;border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.3rem}
+.prod-badge{position:absolute;top:.5rem;left:.5rem;z-index:2;padding:.18rem .55rem;border-radius:20px;font-size:.54rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
 .badge-hot{background:var(--red);color:#fff}
 .badge-new{background:#2E7D32;color:#fff}
 .badge-best{background:var(--navy);color:var(--gold)}
 .badge-featured{background:var(--gold);color:var(--navy)}
-
-.prod-cat-chip{
-  position:absolute;bottom:.6rem;right:.6rem;z-index:2;
-  padding:.18rem .6rem;border-radius:20px;
-  font-size:.56rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
-  background:rgba(255,255,255,.88);color:var(--navy3);
-}
-
-/* Visual content of product image */
-.pv-title{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:#fff;letter-spacing:.04em;line-height:1;text-align:center}
-.pv-sub{font-size:.65rem;font-weight:600;color:rgba(255,255,255,.75);letter-spacing:.1em;text-transform:uppercase;text-align:center}
-.pv-logo{font-family:'Bebas Neue',sans-serif;font-size:.75rem;color:rgba(255,255,255,.4);letter-spacing:.12em;margin-top:.3rem}
-
-/* Product body */
-.prod-body{padding:1.1rem 1.2rem;flex:1;display:flex;flex-direction:column}
-.prod-name{font-size:.92rem;font-weight:700;color:var(--navy);line-height:1.35;margin-bottom:.3rem}
-.prod-desc{font-size:.78rem;color:var(--gray);line-height:1.6;flex:1;margin-bottom:.8rem}
-.prod-features{list-style:none;display:flex;flex-direction:column;gap:.28rem;margin-bottom:.8rem}
-.prod-features li{font-size:.73rem;color:var(--navy);display:flex;align-items:flex-start;gap:.45rem;font-weight:500}
-.prod-features li::before{
-  content:'✓';width:15px;height:15px;border-radius:50%;
-  background:var(--navy);color:var(--gold);
-  font-size:.52rem;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;
-}
-
-/* Product footer — Shopify add-to-cart style */
-.prod-footer{
-  padding:.9rem 1.2rem;border-top:1px solid var(--border);
-  display:flex;align-items:center;justify-content:space-between;
-  background:var(--off);
-}
-.prod-price{display:flex;flex-direction:column}
-.prod-price-main{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:var(--navy);line-height:1}
-.prod-price-sub{font-size:.58rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--gray);margin-top:1px}
-.btn-add{
-  display:inline-flex;align-items:center;gap:.35rem;
-  padding:.58rem 1.15rem;background:var(--navy);color:var(--gold);
-  font-size:.68rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
-  text-decoration:none;border-radius:7px;border:none;cursor:pointer;
-  transition:all .22s;white-space:nowrap;
-}
-.btn-add:hover{background:var(--navy3);transform:translateY(-1px)}
-.btn-add-gold{
-  background:var(--gold);color:var(--navy);
-}
+.prod-cat-chip{position:absolute;bottom:.5rem;right:.5rem;z-index:2;padding:.14rem .5rem;border-radius:20px;font-size:.52rem;font-weight:700;text-transform:uppercase;background:rgba(255,255,255,.88);color:var(--navy3)}
+.pv-title{font-family:'Bebas Neue',sans-serif;font-size:1.15rem;color:#fff;letter-spacing:.03em;line-height:1;text-align:center}
+.pv-sub{font-size:.58rem;font-weight:600;color:rgba(255,255,255,.72);letter-spacing:.08em;text-transform:uppercase;text-align:center}
+.pv-logo{font-family:'Bebas Neue',sans-serif;font-size:.62rem;color:rgba(255,255,255,.35);letter-spacing:.1em;margin-top:.2rem}
+.prod-body{padding:.9rem .9rem .6rem;flex:1}
+.prod-name{font-size:.8rem;font-weight:700;color:var(--navy);line-height:1.3;margin-bottom:.3rem}
+.prod-desc{font-size:.72rem;color:var(--gray);line-height:1.55;display:none}/* hidden on mobile to save space */
+.prod-features{list-style:none;display:flex;flex-direction:column;gap:.22rem;margin-bottom:.5rem}
+.prod-features li{font-size:.68rem;color:var(--navy);display:flex;align-items:flex-start;gap:.35rem;font-weight:500}
+.prod-features li::before{content:'✓';width:13px;height:13px;border-radius:50%;background:var(--navy);color:var(--gold);font-size:.48rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;font-weight:900}
+.prod-footer{padding:.7rem .9rem;border-top:1px solid var(--border);background:var(--off);display:flex;align-items:center;justify-content:space-between;gap:.4rem}
+.prod-price-main{font-family:'Bebas Neue',sans-serif;font-size:.9rem;color:var(--navy);line-height:1}
+.prod-price-sub{font-size:.54rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--gray)}
+.btn-add{display:inline-flex;align-items:center;gap:.25rem;padding:.5rem .75rem;background:var(--navy);color:var(--gold);font-size:.62rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;border-radius:6px;border:none;cursor:pointer;transition:background .2s;white-space:nowrap;-webkit-tap-highlight-color:transparent}
+.btn-add:active{transform:scale(.95)}
+.btn-add:hover{background:var(--navy3)}
+.btn-add-gold{background:var(--gold);color:var(--navy)}
 .btn-add-gold:hover{background:var(--gold2)}
+.catalog-more{text-align:center;margin-top:1.8rem}
+.btn-dark{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;padding:.82rem 1.6rem;background:var(--navy);color:var(--gold);font-weight:700;font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;border-radius:8px;transition:all .25s;border:none;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.btn-dark:hover{background:var(--navy3)}
 
-/* ══════════════════════════════════════════
-   PROS & CONS
-══════════════════════════════════════════ */
+/* ══ PROS & CONS ══ */
 .ret-bg{background:var(--white)}
-.ret-header{text-align:center;margin-bottom:3rem}
-.ret-header h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.9rem,4vw,3.2rem);color:var(--navy);letter-spacing:.04em}
-.ret-script{font-family:'Dancing Script',cursive;font-size:1.65rem;color:var(--gold);display:block;margin-top:.3rem}
-.pc-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.8rem;max-width:1000px;margin:0 auto}
-.pc-col{border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
-.pc-head{
-  display:flex;align-items:center;gap:.7rem;
-  padding:1rem 1.5rem;
-  font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:.08em;
-}
+.ret-header{text-align:center;margin-bottom:2rem}
+.ret-h{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.65rem,6.5vw,2.8rem);color:var(--navy);letter-spacing:.04em;line-height:1.05}
+.ret-h .hl{color:var(--navy3)}
+.ret-script{font-family:'Dancing Script',cursive;font-size:1.45rem;color:var(--gold);display:block;margin-top:.3rem}
+.pc-stack{display:flex;flex-direction:column;gap:1.2rem}
+.pc-col{border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow)}
+.pc-head{display:flex;align-items:center;gap:.6rem;padding:.9rem 1.2rem;font-family:'Bebas Neue',sans-serif;font-size:1.45rem;letter-spacing:.08em}
 .pros .pc-head{background:var(--navy);color:var(--gold)}
 .cons .pc-head{background:var(--navy3);color:rgba(255,255,255,.9)}
-.pc-body{background:var(--off);border:2px solid var(--border);border-top:none;border-radius:0 0 14px 14px}
-.pc-row{
-  display:flex;align-items:flex-start;gap:.8rem;
-  padding:.85rem 1.3rem;border-bottom:1px solid var(--border);
-  transition:background .2s;
-}
+.pc-body{background:var(--off);border:1.5px solid var(--border);border-top:none;border-radius:0 0 var(--r-lg) var(--r-lg)}
+.pc-row{display:flex;align-items:flex-start;gap:.7rem;padding:.8rem 1.1rem;border-bottom:1px solid var(--border)}
 .pc-row:last-child{border-bottom:none}
-.pc-row:hover{background:#fff}
-.pc-ico{
-  width:30px;height:30px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  font-size:.8rem;font-weight:900;flex-shrink:0;
-}
+.pc-ico{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:900;flex-shrink:0}
 .pros .pc-ico{background:var(--navy);color:var(--gold)}
-.cons .pc-ico{background:#FFEBEE;color:var(--red2)}
-.pc-text strong{display:block;font-size:.84rem;font-weight:700;color:var(--navy);margin-bottom:.1rem}
-.pc-text p{font-size:.77rem;color:var(--gray);line-height:1.55}
+.cons .pc-ico{background:#FFEBEE;color:#C62828}
+.pc-text strong{display:block;font-size:.82rem;font-weight:700;color:var(--navy);margin-bottom:.08rem}
+.pc-text p{font-size:.75rem;color:var(--gray);line-height:1.5}
 
-/* ══════════════════════════════════════════
-   YOUTUBE SECTION
-══════════════════════════════════════════ */
+/* ══ YOUTUBE ══ */
 .yt-bg{background:var(--navy)}
-.yt-inner .sec-eyebrow{color:var(--red)}
-.yt-inner .sec-title{color:var(--white)}
-.yt-inner .sec-title .hl{color:var(--red)}
-.yt-inner .sec-body{color:rgba(255,255,255,.55)}
-
+.yt-eyebrow{font-size:.6rem;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:var(--red);display:block;margin-bottom:.4rem}
+.yt-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.75rem,7vw,2.8rem);letter-spacing:.04em;color:#fff;line-height:1.05;margin-bottom:.6rem}
+.yt-title .hl{color:var(--red)}
+.yt-body{font-size:.88rem;color:rgba(255,255,255,.5);line-height:1.7;margin-bottom:2rem}
 /* Channel strip */
-.ch-strip{
-  background:rgba(255,255,255,.05);border:1px solid rgba(245,196,0,.18);
-  border-radius:12px;padding:1.3rem 1.8rem;
-  display:flex;align-items:center;justify-content:space-between;
-  flex-wrap:wrap;gap:1rem;margin-bottom:2.5rem;
-}
-.ch-avatar{
-  width:46px;height:46px;border-radius:50%;background:var(--gold);
-  display:flex;align-items:center;justify-content:center;
-  font-family:'Bebas Neue',sans-serif;font-size:.85rem;color:var(--navy);
-  flex-shrink:0;border:2px solid rgba(255,255,255,.15);
-}
-.ch-info-name{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.06em;color:#fff}
-.ch-info-handle{font-size:.68rem;color:rgba(255,255,255,.45);font-weight:500}
-.ch-metrics{display:flex;gap:1.8rem}
-.cm-n{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:var(--gold);line-height:1}
-.cm-l{font-size:.56rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.38)}
-.btn-subscribe{
-  display:inline-flex;align-items:center;gap:.4rem;
-  padding:.58rem 1.3rem;background:var(--red);color:#fff;
-  font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
-  text-decoration:none;border-radius:7px;transition:all .22s;white-space:nowrap;
-}
-.btn-subscribe:hover{background:var(--red2);transform:translateY(-1px)}
+.ch-strip{background:rgba(255,255,255,.05);border:1px solid rgba(245,196,0,.2);border-radius:var(--r-lg);padding:1.1rem var(--pad);margin-bottom:1.8rem;display:flex;flex-direction:column;gap:.9rem}
+.ch-row1{display:flex;align-items:center;gap:.8rem}
+.ch-avatar{width:44px;height:44px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:.8rem;color:var(--navy);flex-shrink:0}
+.ch-info-name{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.05em;color:#fff}
+.ch-info-handle{font-size:.65rem;color:rgba(255,255,255,.42)}
+.ch-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem}
+.cm-card{background:rgba(255,255,255,.05);border-radius:8px;padding:.6rem;text-align:center}
+.cm-n{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:var(--gold);line-height:1}
+.cm-l{font-size:.55rem;font-weight:600;text-transform:uppercase;letter-spacing:.09em;color:rgba(255,255,255,.38)}
+.btn-subscribe{display:flex;align-items:center;justify-content:center;gap:.4rem;padding:.78rem 1.2rem;background:var(--red);color:#fff;font-size:.72rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;border-radius:7px;transition:background .2s;-webkit-tap-highlight-color:transparent}
+.btn-subscribe:hover{background:var(--red2)}
+/* Video cards — single column on mobile */
+.vid-grid{display:grid;grid-template-columns:1fr;gap:1rem}
+.vid-card{background:rgba(255,255,255,.05);border-radius:var(--r-lg);overflow:hidden;border:1px solid rgba(255,255,255,.07);display:block;transition:box-shadow .25s,border-color .25s}
+.vid-card:hover{border-color:rgba(245,196,0,.3);box-shadow:0 8px 28px rgba(0,0,0,.3)}
+.vid-thumb{aspect-ratio:16/9;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.vid-overlay{text-align:center;padding:.7rem;z-index:1;position:relative}
+.vo1{font-family:'Bebas Neue',sans-serif;font-size:.82rem;color:#fff;letter-spacing:.04em}
+.vo2{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--gold);letter-spacing:.04em;line-height:1}
+.vo3{font-size:.6rem;color:rgba(255,255,255,.65);margin-top:.15rem}
+.vid-play{position:absolute;width:42px;height:42px;background:rgba(211,47,47,.88);border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:3;transition:transform .25s}
+.vid-card:hover .vid-play{transform:scale(1.1);background:var(--red)}
+.vid-dur{position:absolute;bottom:.4rem;right:.4rem;background:rgba(0,0,0,.8);color:#fff;font-size:.62rem;font-weight:700;padding:.12rem .42rem;border-radius:3px;z-index:2}
+.vid-info{padding:.9rem 1rem}
+.vid-title{font-size:.83rem;font-weight:600;color:#fff;line-height:1.4;margin-bottom:.3rem}
+.vid-meta{font-size:.68rem;color:rgba(255,255,255,.4);display:flex;gap:.4rem}
+.vid-chip{display:inline-block;margin-top:.4rem;padding:.12rem .52rem;background:rgba(245,196,0,.1);border-radius:20px;font-size:.58rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gold)}
+.yt-more{text-align:center;margin-top:1.8rem}
 
-/* Video grid */
-.vid-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:1.3rem}
-.vid-card{
-  background:rgba(255,255,255,.05);border-radius:12px;overflow:hidden;
-  border:1px solid rgba(255,255,255,.07);
-  text-decoration:none;color:#fff;display:block;transition:all .3s;
-}
-.vid-card:hover{transform:translateY(-5px);border-color:rgba(245,196,0,.3);box-shadow:0 14px 36px rgba(0,0,0,.3)}
-.vid-thumb{
-  aspect-ratio:16/9;position:relative;
-  display:flex;align-items:center;justify-content:center;overflow:hidden;
-}
-.vid-overlay{text-align:center;padding:.8rem;z-index:1;position:relative}
-.vo1{font-family:'Bebas Neue',sans-serif;font-size:.85rem;color:#fff;letter-spacing:.04em;line-height:1.2}
-.vo2{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:var(--gold);letter-spacing:.04em;line-height:1}
-.vo3{font-size:.6rem;color:rgba(255,255,255,.7);margin-top:.2rem}
-.vid-play{
-  position:absolute;width:44px;height:44px;
-  background:rgba(211,47,47,.88);border-radius:50%;
-  display:flex;align-items:center;justify-content:center;z-index:3;transition:all .3s;
-}
-.vid-card:hover .vid-play{background:var(--red);transform:scale(1.1)}
-.vid-dur{
-  position:absolute;bottom:.4rem;right:.4rem;
-  background:rgba(0,0,0,.8);color:#fff;
-  font-size:.63rem;font-weight:700;padding:.15rem .45rem;border-radius:3px;z-index:2;
-}
-.vid-info{padding:.9rem 1.1rem}
-.vid-title{font-size:.84rem;font-weight:600;color:#fff;line-height:1.4;margin-bottom:.35rem}
-.vid-meta{font-size:.68rem;color:rgba(255,255,255,.45);display:flex;gap:.5rem}
-.vid-chip{
-  display:inline-block;margin-top:.45rem;
-  padding:.14rem .55rem;background:rgba(245,196,0,.1);
-  border-radius:20px;font-size:.58rem;font-weight:700;letter-spacing:.07em;
-  text-transform:uppercase;color:var(--gold);
-}
-
-/* ══════════════════════════════════════════
-   SOCIAL HUB
-══════════════════════════════════════════ */
+/* ══ SOCIAL HUB ══ */
 .social-bg{background:var(--off2)}
-.platforms-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(265px,1fr));gap:1rem}
-.plat-card{
-  display:flex;align-items:center;gap:.85rem;
-  padding:1.1rem 1.3rem;background:var(--white);
-  border:1.5px solid var(--border);border-radius:12px;
-  text-decoration:none;color:inherit;transition:all .25s;
-}
-.plat-card:hover{border-color:var(--gold);transform:translateY(-3px);box-shadow:var(--shadow)}
+.social-header{text-align:center;margin-bottom:2rem}
+.platforms-grid{display:grid;grid-template-columns:1fr;gap:.75rem}
+.plat-card{display:flex;align-items:center;gap:.8rem;padding:1rem 1.1rem;background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-lg);transition:all .25s;-webkit-tap-highlight-color:transparent}
+.plat-card:hover{border-color:var(--gold);box-shadow:var(--shadow)}
+.plat-card:active{transform:scale(.98)}
 .plat-ico{width:40px;height:40px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.plat-name{font-size:.85rem;font-weight:700;color:var(--navy);display:block;margin-bottom:.1rem}
+.plat-name{font-size:.84rem;font-weight:700;color:var(--navy);display:block;margin-bottom:.08rem}
 .plat-handle{font-size:.7rem;color:var(--gray);font-weight:500}
 
-/* ══════════════════════════════════════════
-   FAQ
-══════════════════════════════════════════ */
+/* ══ FAQs ══ */
 .faq-bg{background:var(--white)}
-.faq-grid{max-width:820px;margin:2.5rem auto 0;display:flex;flex-direction:column;gap:.7rem}
-.faq-item{background:var(--off);border:1px solid var(--border);border-radius:10px;overflow:hidden}
-.faq-q{
-  display:flex;justify-content:space-between;align-items:center;
-  padding:1rem 1.3rem;cursor:pointer;
-  font-size:.88rem;font-weight:700;color:var(--navy);
-  transition:background .2s;gap:1rem;
-}
-.faq-q:hover{background:#fff}
-.faq-q .faq-ico{
-  width:26px;height:26px;border-radius:50%;background:var(--navy);
-  color:var(--gold);font-size:1rem;font-weight:900;
-  display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;transition:transform .3s;
-}
-.faq-item.open .faq-ico{transform:rotate(45deg);background:var(--gold);color:var(--navy)}
-.faq-a{display:none;padding:0 1.3rem 1rem;font-size:.83rem;color:var(--gray);line-height:1.7}
-.faq-item.open .faq-a{display:block}
+.faq-header{text-align:center;margin-bottom:1.8rem}
+.faq-list{display:flex;flex-direction:column;gap:.6rem}
+.faq-item{background:var(--off);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;transition:border-color .2s}
 .faq-item.open{border-color:var(--gold);background:#fff}
+.faq-q{display:flex;justify-content:space-between;align-items:center;padding:.95rem 1.1rem;cursor:pointer;font-size:.85rem;font-weight:700;color:var(--navy);gap:.8rem;-webkit-tap-highlight-color:transparent}
+.faq-q:hover{background:#fff}
+.faq-ico{width:26px;height:26px;border-radius:50%;background:var(--navy);color:var(--gold);font-size:1rem;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .3s,background .2s}
+.faq-item.open .faq-ico{transform:rotate(45deg);background:var(--gold);color:var(--navy)}
+.faq-a{display:none;padding:.1rem 1.1rem 1rem;font-size:.82rem;color:var(--gray);line-height:1.7}
+.faq-item.open .faq-a{display:block}
 
-/* ══════════════════════════════════════════
-   CONTACT
-══════════════════════════════════════════ */
+/* ══ CONTACT ══ */
 .contact-bg{background:var(--navy3)}
-.contact-inner{max-width:820px;margin:0 auto;text-align:center}
+.contact-inner{text-align:center}
 .contact-bg .sec-eyebrow{color:var(--gold)}
 .contact-bg .sec-title{color:#fff}
 .contact-bg .sec-title .hl{color:var(--gold)}
-.contact-bg .sec-body{color:rgba(255,255,255,.58);margin:0 auto .8rem}
-.ccards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin:2rem 0}
-.ccard{
-  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
-  border-radius:12px;padding:1.5rem 1.2rem;text-align:center;
-  text-decoration:none;color:#fff;transition:all .25s;
-}
-.ccard:hover{background:rgba(245,196,0,.1);border-color:var(--gold);transform:translateY(-3px)}
-.ccard-icon{font-size:1.5rem;margin-bottom:.5rem}
-.ccard-label{font-size:.58rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.25rem}
-.ccard-val{font-size:.78rem;font-weight:600;color:rgba(255,255,255,.8);word-break:break-all}
+.contact-bg .sec-body{color:rgba(255,255,255,.58);margin:0 auto 1.8rem}
+.ccards{display:grid;grid-template-columns:1fr;gap:.7rem;margin-bottom:1.8rem}
+.ccard{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:var(--r-lg);padding:1.3rem 1rem;text-align:center;display:block;transition:all .25s;-webkit-tap-highlight-color:transparent}
+.ccard:hover{background:rgba(245,196,0,.1);border-color:var(--gold)}
+.ccard:active{transform:scale(.98)}
+.ccard-icon{font-size:1.4rem;margin-bottom:.4rem}
+.ccard-label{font-size:.56rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.22rem}
+.ccard-val{font-size:.76rem;font-weight:600;color:rgba(255,255,255,.8);word-break:break-all}
 
-/* ══════════════════════════════════════════
-   CTA STRIP
-══════════════════════════════════════════ */
-.cta-strip{
-  background:var(--gold);padding:4rem 3rem;text-align:center;
-  position:relative;overflow:hidden;
-}
-.cta-strip::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent,transparent 18px,rgba(11,31,58,.03) 18px,rgba(11,31,58,.03) 19px)}
-.cta-strip h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.9rem,4vw,3rem);color:var(--navy);letter-spacing:.05em;margin-bottom:.65rem;position:relative}
-.cta-strip p{color:var(--navy2);font-size:.95rem;font-weight:600;max-width:520px;margin:0 auto 2rem;position:relative}
-.cta-btns-row{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;position:relative}
-.btn-dark{display:inline-flex;align-items:center;gap:.45rem;padding:.82rem 1.8rem;background:var(--navy);color:var(--gold);font-weight:700;font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border-radius:8px;transition:all .25s}
-.btn-dark:hover{background:var(--navy3);transform:translateY(-2px)}
-.btn-outline-dark{display:inline-flex;align-items:center;gap:.45rem;padding:.82rem 1.8rem;border:2px solid var(--navy);color:var(--navy);font-weight:700;font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border-radius:8px;transition:all .25s}
+/* ══ CTA STRIP ══ */
+.cta-strip{background:var(--gold);padding:3rem var(--pad);text-align:center;position:relative;overflow:hidden}
+.cta-strip::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent,transparent 14px,rgba(11,31,58,.03) 14px,rgba(11,31,58,.03) 15px)}
+.cta-strip h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.7rem,7vw,2.8rem);color:var(--navy);letter-spacing:.05em;margin-bottom:.6rem;position:relative}
+.cta-strip p{color:var(--navy2);font-size:.9rem;font-weight:600;max-width:480px;margin:0 auto 1.8rem;position:relative}
+.cta-btns-row{display:flex;flex-direction:column;gap:.65rem;position:relative}
+.btn-outline-dark{display:flex;align-items:center;justify-content:center;gap:.4rem;padding:.82rem 1.6rem;border:2px solid var(--navy);color:var(--navy);font-weight:700;font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;border-radius:8px;transition:all .25s;-webkit-tap-highlight-color:transparent}
 .btn-outline-dark:hover{background:var(--navy);color:var(--gold)}
 
-/* ══════════════════════════════════════════
-   FOOTER
-══════════════════════════════════════════ */
+/* ══ FOOTER ══ */
 .footer-top-bar{height:4px;background:var(--gold)}
-.footer-main{background:var(--navy);padding:3.5rem 3rem;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;max-width:1400px;margin:0 auto}
-.ft-brand-name{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.08em;color:var(--gold);margin-bottom:.25rem}
-.ft-brand-sub{font-size:.56rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:.9rem}
-.ft-brand-desc{font-size:.8rem;color:rgba(255,255,255,.45);line-height:1.7}
-.ft-col h4{font-size:.64rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:.9rem}
-.ft-col a{display:block;font-size:.78rem;color:rgba(255,255,255,.42);text-decoration:none;margin-bottom:.5rem;transition:color .2s}
+.footer-main{background:var(--navy);padding:2.5rem var(--pad);display:flex;flex-direction:column;gap:2rem}
+.ft-brand-name{font-family:'Bebas Neue',sans-serif;font-size:1.15rem;letter-spacing:.08em;color:var(--gold);margin-bottom:.2rem}
+.ft-brand-sub{font-size:.52rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:.8rem}
+.ft-brand-desc{font-size:.78rem;color:rgba(255,255,255,.42);line-height:1.7}
+/* Collapsible footer columns on mobile */
+.ft-col-header{display:flex;justify-content:space-between;align-items:center;cursor:pointer;padding:.4rem 0;-webkit-tap-highlight-color:transparent}
+.ft-col h4{font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.ft-col-arrow{color:var(--gold);font-size:.85rem;transition:transform .25s}
+.ft-col.open .ft-col-arrow{transform:rotate(180deg)}
+.ft-col-links{display:none;flex-direction:column;gap:.4rem;padding:.5rem 0 .2rem}
+.ft-col.open .ft-col-links{display:flex}
+.ft-col a{font-size:.78rem;color:rgba(255,255,255,.42);transition:color .2s}
 .ft-col a:hover{color:var(--gold)}
-.footer-bottom{background:var(--navy);border-top:1px solid rgba(255,255,255,.07);padding:1.1rem 3rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.7rem;max-width:100%}
-.footer-copy{font-size:.65rem;color:rgba(255,255,255,.25)}
-.footer-bottom-links{display:flex;gap:1.3rem}
-.footer-bottom-links a{font-size:.65rem;color:rgba(255,255,255,.25);text-decoration:none;transition:color .2s}
+.footer-bottom{background:var(--navy);border-top:1px solid rgba(255,255,255,.07);padding:1rem var(--pad);text-align:center}
+.footer-copy{font-size:.62rem;color:rgba(255,255,255,.25);margin-bottom:.5rem;line-height:1.5}
+.footer-bottom-links{display:flex;justify-content:center;gap:1.1rem;flex-wrap:wrap}
+.footer-bottom-links a{font-size:.62rem;color:rgba(255,255,255,.28);transition:color .2s}
 .footer-bottom-links a:hover{color:var(--gold)}
 
-/* ══════════════════════════════════════════
-   SCROLL REVEAL
-══════════════════════════════════════════ */
-@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-.reveal{opacity:0;transform:translateY(22px);transition:opacity .65s,transform .65s}
-.reveal.in{opacity:1;transform:none}
-.delay-1{transition-delay:.1s}.delay-2{transition-delay:.2s}.delay-3{transition-delay:.3s}.delay-4{transition-delay:.4s}
+/* ══ FIXED BOTTOM CTA BAR (mobile only) ══ */
+.bottom-cta-bar{position:fixed;bottom:0;left:0;right:0;z-index:700;background:var(--white);border-top:2px solid var(--border);padding:.7rem var(--pad);display:flex;gap:.6rem;box-shadow:0 -4px 16px rgba(11,31,58,.1)}
+.bcta-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:.4rem;padding:.78rem .5rem;border-radius:8px;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;-webkit-tap-highlight-color:transparent;transition:all .2s}
+.bcta-btn:active{transform:scale(.96)}
+.bcta-primary{background:var(--navy);color:var(--gold)}
+.bcta-yt{background:var(--red);color:#fff}
+/* add bottom padding to body so fixed bar doesn't overlap */
+body{padding-bottom:70px}
 
-/* ══════════════════════════════════════════
-   RESPONSIVE
-══════════════════════════════════════════ */
-@media(max-width:1024px){
-  .hero{grid-template-columns:1fr}
-  .hero-right{display:none}
-  .cat-grid{grid-template-columns:repeat(2,1fr)}
-  .footer-main{grid-template-columns:1fr 1fr}
-  .pc-grid{grid-template-columns:1fr}
+/* ══ TOAST ══ */
+#toast{display:none;position:fixed;bottom:80px;left:var(--pad);right:var(--pad);background:var(--navy);color:var(--gold);padding:.9rem 1.2rem;border-radius:10px;font-size:.8rem;font-weight:700;z-index:9999;box-shadow:var(--shadow-lg);border:1px solid var(--gold);text-align:center}
+
+/* ══ SCROLL REVEAL ══ */
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s}
+.reveal.in{opacity:1;transform:none}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}
+
+/* ══════════════════════════════════════
+   TABLET — 600px+
+══════════════════════════════════════ */
+@media(min-width:600px){
+  :root{--pad:1.5rem}
+  .hero-ctas{flex-direction:row;flex-wrap:wrap}
+  .cta-primary,.cta-yt,.cta-ghost{flex:1;min-width:140px}
+  .vid-grid{grid-template-columns:1fr 1fr}
+  .ccards{grid-template-columns:1fr 1fr 1fr}
+  .cta-btns-row{flex-direction:row;justify-content:center}
+  .btn-dark,.btn-outline-dark{flex:0 0 auto}
+  .platforms-grid{grid-template-columns:1fr 1fr}
 }
-@media(max-width:768px){
-  .nav-top{padding:.8rem 1.2rem}.nav-search{display:none}
-  .nav-menu-inner{padding:0;overflow-x:auto}
-  .nav-menu a{padding:.65rem .8rem;font-size:.63rem}
-  .section,.section-full{padding:3rem 1.2rem}
-  .hero-left{padding:4rem 1.5rem 3rem}
-  .cta-strip{padding:3rem 1.5rem}
-  .footer-main{grid-template-columns:1fr;padding:2.5rem 1.5rem;gap:1.8rem}
-  .footer-bottom{padding:1rem 1.5rem;flex-direction:column;text-align:center}
-  .pc-grid{grid-template-columns:1fr;gap:1rem}
-  .ch-metrics{flex-wrap:wrap;gap:1rem}
+
+/* ══════════════════════════════════════
+   DESKTOP — 900px+
+══════════════════════════════════════ */
+@media(min-width:900px){
+  :root{--pad:3rem}
+  body{padding-bottom:0}
+  /* Hide mobile-only elements */
+  .hamburger{display:none}
+  .mobile-drawer{display:none}
+  .bottom-cta-bar{display:none}
+  /* Show desktop elements */
+  .nav-menu{display:block}
+  .nav-search{display:flex;flex:1;max-width:380px;align-items:center;gap:.5rem;background:var(--off);border:1.5px solid var(--border);border-radius:7px;padding:.5rem .9rem;transition:border-color .2s}
+  .nav-search:focus-within{border-color:var(--navy3)}
+  .nav-search svg{flex-shrink:0;color:var(--gray)}
+  .nav-search input{border:none;background:transparent;outline:none;font-size:.84rem;font-family:'DM Sans',sans-serif;color:var(--navy);width:100%}
+  .nav-search input::placeholder{color:#A0AEC0}
+  .btn-login{display:inline-block;padding:.45rem .85rem;border:1.5px solid var(--border);color:var(--gray);font-size:.65rem;font-weight:600;border-radius:6px;transition:all .2s}
+  .btn-login:hover{border-color:var(--navy);color:var(--navy)}
+  /* Hero — two column */
+  .hero{display:grid;grid-template-columns:1.1fr .9fr;min-height:500px;padding:5rem 3rem 4rem}
+  .hero-left{padding:0;max-width:none}
+  .hero-right-panel{display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;background:var(--navy2);border-left:1px solid rgba(255,255,255,.06);padding:3rem 2rem;gap:2rem}
+  .hero-stats-row{display:none}
+  .hero-arc{display:block;position:absolute;border-radius:50%;pointer-events:none}
+  .arc1{width:520px;height:520px;right:-100px;top:50%;transform:translateY(-50%);border:44px solid var(--gold);clip-path:ellipse(55% 100% at 100% 50%);opacity:.9}
+  .arc2{width:520px;height:520px;right:-100px;top:50%;transform:translateY(-50%);border:30px solid var(--navy3);clip-path:ellipse(55% 100% at 100% 50%);margin:56px}
+  .arc3{width:520px;height:520px;right:-100px;top:50%;transform:translateY(-50%);border:18px solid var(--gold);clip-path:ellipse(55% 100% at 100% 50%);margin:112px;opacity:.45}
+  .hero-badge-float{display:flex;flex-direction:column;align-items:center;justify-content:center;position:absolute;bottom:2rem;right:2rem;width:96px;height:96px;background:var(--gold);border-radius:50%;gap:1px;box-shadow:0 0 0 12px rgba(245,196,0,.15);animation:pulse 3s ease-in-out infinite;z-index:3}
+  .hero-badge-float span{font-family:'Bebas Neue',sans-serif;font-size:.85rem;color:var(--navy);line-height:1.15;text-align:center}
+  .hero-badge-float small{font-size:.44rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--navy2)}
+  .hstat-desktop{text-align:center;position:relative;z-index:2}
+  .hstat-desktop .n{font-family:'Bebas Neue',sans-serif;font-size:2.8rem;color:var(--gold);line-height:1}
+  .hstat-desktop .l{font-size:.58rem;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.38)}
+  .hstat-divider{width:36px;height:1px;background:rgba(255,255,255,.1);margin:0 auto}
+  .hero-ctas{flex-direction:row}
+  .cta-primary,.cta-yt,.cta-ghost{flex:0 0 auto}
+  /* Cat grid 4 columns */
+  .cat-grid{grid-template-columns:repeat(4,1fr);gap:1.2rem}
+  .cat-tile-inner{min-height:200px}
+  /* Product grid 3 columns */
+  .prod-grid{grid-template-columns:repeat(3,1fr);gap:1.3rem}
+  .prod-desc{display:block}
+  /* Pros cons side by side */
+  .pc-stack{flex-direction:row;gap:1.8rem}
+  .pc-col{flex:1}
+  /* Videos 2 col */
+  .vid-grid{grid-template-columns:repeat(2,1fr)}
+  /* Channel strip row */
+  .ch-strip{flex-direction:row;align-items:center;padding:1.3rem 1.8rem}
+  .ch-metrics{grid-template-columns:none;display:flex;gap:1.8rem}
+  .cm-card{background:transparent;padding:0}
+  /* Social 2 col */
+  .platforms-grid{grid-template-columns:repeat(2,1fr)}
+  /* FAQ max width */
+  .faq-list{max-width:800px;margin:0 auto}
+  /* Footer 4 col */
+  .footer-main{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;padding:3.5rem 3rem}
+  .ft-col-header{cursor:default}
+  .ft-col-arrow{display:none}
+  .ft-col-links{display:flex!important}
+  .footer-bottom{padding:1.1rem 3rem;display:flex;justify-content:space-between;align-items:center;text-align:left}
+  .footer-copy{margin-bottom:0}
+  /* Filter full row */
+  .filter-scroll{overflow-x:visible;flex-wrap:wrap;gap:.5rem}
+  /* Section padding */
+  .sec{padding:4.5rem 3rem}
 }
+
+@media(min-width:1200px){
+  .vid-grid{grid-template-columns:repeat(4,1fr)}
+  .platforms-grid{grid-template-columns:repeat(3,1fr)}
+}
+
+@keyframes pulse{0%,100%{box-shadow:0 0 0 12px rgba(245,196,0,.15)}50%{box-shadow:0 0 0 24px rgba(245,196,0,.06)}}
 </style>
 </head>
 <body>
 
-<!-- ══ ANNOUNCEMENT BAR ══ -->
-<div class="announce-bar">
-  <span>&#127881; Free Consultation Available &nbsp;·&nbsp; AIA Philippines Authorized Partner
-    <a href="mailto:info@insurancepilipinas.com">Start Today &#8594;</a>
+<!-- ANNOUNCE -->
+<div class="announce">
+  <span>🎉 Free Consultation &nbsp;·&nbsp; AIA Philippines Authorized Partner
+    <a href="mailto:info@insurancepilipinas.com">Start Today →</a>
   </span>
 </div>
 
-<!-- ══ TOP NAV ══ -->
+<!-- NAV -->
 <div class="nav-wrapper">
   <div class="nav-top">
     <div class="nav-logo">
       <span class="logo-main">Insurance <em>Pilipinas</em></span>
-      <span class="logo-sub">Infinite Wealth Financials &nbsp;·&nbsp; AIA Philippines Affiliated</span>
+      <span class="logo-sub">Infinite Wealth Financials · AIA Philippines</span>
     </div>
+    <!-- Desktop search (shown via CSS @media) -->
     <div class="nav-search">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      <input type="text" placeholder="Search plans, products, videos…">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" placeholder="Search plans, products…">
     </div>
-    <div class="nav-actions">
+    <div class="nav-right-btns">
       <a href="https://www.youtube.com/@infinitewealthfinancials" target="_blank" class="btn-yt">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="white"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="white"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>
         YouTube
       </a>
-      <a href="mailto:info@insurancepilipinas.com" class="btn-login">Log In</a>
+      <a href="mailto:info@insurancepilipinas.com" class="btn-login" style="display:none" id="desktop-login">Log In</a>
       <a href="mailto:quotation@insurancepilipinas.com" class="btn-quote">Get a Quote</a>
+      <!-- Hamburger (hidden on desktop via CSS) -->
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
+  <!-- Desktop nav menu -->
   <div class="nav-menu">
     <div class="nav-menu-inner">
       <a href="#home" class="active">Home</a>
@@ -676,55 +451,86 @@ body{font-family:'DM Sans',sans-serif;background:var(--off);color:var(--navy);ov
       <a href="#life">Life Insurance</a>
       <a href="#health">Health</a>
       <a href="#education">Education</a>
-      <a href="#wealth">Wealth &amp; Retirement</a>
-      <a href="#youtube">Watch &amp; Learn</a>
+      <a href="#wealth">Wealth & Retirement</a>
+      <a href="#youtube">Watch & Learn</a>
       <a href="#faqs">FAQs</a>
       <a href="#contact">Contact Us</a>
     </div>
   </div>
 </div>
 
-<!-- ══ HERO ══ -->
+<!-- MOBILE DRAWER -->
+<div class="mobile-drawer" id="drawer">
+  <div class="drawer-overlay" onclick="closeDrawer()"></div>
+  <div class="drawer-panel">
+    <button class="drawer-close" onclick="closeDrawer()">✕</button>
+    <span class="drawer-logo">Insurance <em>Pilipinas</em></span>
+    <nav class="drawer-nav" id="drawer-nav">
+      <a href="#home" onclick="closeDrawer()">🏠 Home</a>
+      <a href="#catalog" onclick="closeDrawer()">📋 All Plans</a>
+      <a href="#life" onclick="closeDrawer()">🛡 Life Insurance</a>
+      <a href="#health" onclick="closeDrawer()">🏥 Health & Medical</a>
+      <a href="#education" onclick="closeDrawer()">🎓 Education Plans</a>
+      <a href="#wealth" onclick="closeDrawer()">📈 Wealth & Retirement</a>
+      <a href="#youtube" onclick="closeDrawer()">▶ Watch & Learn</a>
+      <a href="#faqs" onclick="closeDrawer()">❓ FAQs</a>
+      <a href="#contact" onclick="closeDrawer()">📩 Contact Us</a>
+    </nav>
+    <div class="drawer-ctas">
+      <a href="mailto:quotation@insurancepilipinas.com" class="drawer-btn-primary bcta-btn" onclick="closeDrawer()">📋 Get a Free Quote</a>
+      <a href="https://www.youtube.com/@infinitewealthfinancials" target="_blank" class="drawer-btn-yt bcta-btn" onclick="closeDrawer()">▶ Watch on YouTube</a>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
 <div class="hero" id="home">
-  <!-- LEFT -->
-  <div class="hero-left">
-    <div class="hero-eyebrow"><span></span> AIA Philippines Authorized Partner &nbsp;·&nbsp; Philippines</div>
+  <!-- Desktop arcs -->
+  <div class="hero-arc arc1"></div>
+  <div class="hero-arc arc2"></div>
+  <div class="hero-arc arc3"></div>
+  <!-- LEFT / MAIN CONTENT -->
+  <div class="hero-left" style="position:relative;z-index:2">
+    <div class="hero-eyebrow"><span></span> AIA Philippines Authorized Partner · Philippines</div>
     <h1 class="hero-h1">INSURANCE<br><span class="accent">PILIPINAS</span></h1>
     <div class="hero-divider"></div>
     <div class="hero-h2">Infinite Wealth Financials</div>
     <div class="hero-script">Protecting the Dreams of Every Filipino Family</div>
+    <!-- Mobile stats row -->
+    <div class="hero-stats-row">
+      <div class="hst-m"><div class="hst-m-n">32+</div><div class="hst-m-l">Videos</div></div>
+      <div class="hst-m"><div class="hst-m-n">5+</div><div class="hst-m-l">Platforms</div></div>
+      <div class="hst-m"><div class="hst-m-n">AIA</div><div class="hst-m-l">Affiliated</div></div>
+      <div class="hst-m"><div class="hst-m-n">PH</div><div class="hst-m-l">Based</div></div>
+    </div>
     <div class="hero-pills">
-      <span class="hero-pill">&#128737; Life Insurance</span>
-      <span class="hero-pill">&#127973; Health Plans</span>
-      <span class="hero-pill">&#127891; Education</span>
-      <span class="hero-pill">&#128200; Wealth &amp; Retirement</span>
+      <span class="hero-pill">🛡 Life Insurance</span>
+      <span class="hero-pill">🏥 Health Plans</span>
+      <span class="hero-pill">🎓 Education</span>
+      <span class="hero-pill">📈 Wealth & Retirement</span>
     </div>
     <div class="hero-ctas">
-      <a href="#catalog" class="cta-primary">&#128203; Browse All Plans</a>
+      <a href="#catalog" class="cta-primary">📋 Browse All Plans</a>
       <a href="https://www.youtube.com/@infinitewealthfinancials" target="_blank" class="cta-yt">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>
         Watch Videos
       </a>
-      <a href="https://www.linkedin.com/in/insurancepilipinas" target="_blank" class="cta-ghost">LinkedIn &#8599;</a>
+      <a href="https://www.linkedin.com/in/insurancepilipinas" target="_blank" class="cta-ghost">LinkedIn ↗</a>
     </div>
   </div>
-  <!-- RIGHT -->
-  <div class="hero-right">
+  <!-- RIGHT PANEL (desktop only) -->
+  <div class="hero-right-panel" id="hero-right">
     <div class="hero-arc arc1"></div>
     <div class="hero-arc arc2"></div>
     <div class="hero-arc arc3"></div>
-    <div class="hero-stats">
-      <div class="hstat"><div class="hstat-n">32+</div><div class="hstat-l">Videos Published</div></div>
-      <div class="hstat-div"></div>
-      <div class="hstat"><div class="hstat-n">5+</div><div class="hstat-l">Social Platforms</div></div>
-      <div class="hstat-div"></div>
-      <div class="hstat"><div class="hstat-n">AIA</div><div class="hstat-l">Philippines Affiliated</div></div>
-      <div class="hstat-div"></div>
-      <div class="hstat"><div class="hstat-n">100%</div><div class="hstat-l">Client Commitment</div></div>
-    </div>
-    <div class="hero-badge-float">
-      <span>Insurance</span><span>Pilipinas</span><small>Philippines</small>
-    </div>
+    <div class="hstat-desktop" style="z-index:2"><div class="n">32+</div><div class="l">Videos Published</div></div>
+    <div class="hstat-divider" style="z-index:2"></div>
+    <div class="hstat-desktop" style="z-index:2"><div class="n">5+</div><div class="l">Social Platforms</div></div>
+    <div class="hstat-divider" style="z-index:2"></div>
+    <div class="hstat-desktop" style="z-index:2"><div class="n">AIA</div><div class="l">Philippines Affiliated</div></div>
+    <div class="hstat-divider" style="z-index:2"></div>
+    <div class="hstat-desktop" style="z-index:2"><div class="n">100%</div><div class="l">Client Commitment</div></div>
+    <div class="hero-badge-float"><span>Insurance</span><span>Pilipinas</span><small>Philippines</small></div>
   </div>
 </div>
 
@@ -758,82 +564,76 @@ body{font-family:'DM Sans',sans-serif;background:var(--off);color:var(--navy);ov
   </div>
 </div>
 
-<!-- ══ SHOP BY CATEGORY ══ -->
+<!-- SHOP BY CATEGORY -->
 <div class="cat-bg">
-  <div class="section">
+  <div class="sec">
     <div class="reveal">
-      <div class="sec-eyebrow">Shop Now by Category</div>
+      <span class="sec-eyebrow">Shop Now by Category</span>
       <h2 class="sec-title">FIND YOUR PERFECT <span class="hl">PROTECTION PLAN</span></h2>
-      <p class="sec-body">Browse our curated AIA Philippines insurance and financial products — organized by what matters most to your family.</p>
+      <p class="sec-body">Browse our curated AIA Philippines products — organized by what matters most to your family.</p>
     </div>
     <div class="cat-grid reveal">
-      <a href="#life" class="cat-tile ct-life">
+      <a href="#catalog" onclick="filterCat('life')" class="cat-tile ct-life">
         <div class="cat-tile-inner">
-          <div class="ct-icon">&#128737;&#65039;</div>
+          <div class="ct-icon">🛡️</div>
           <div class="ct-name">Life Insurance</div>
           <div class="ct-count">Whole Life &amp; Term Plans</div>
-          <div class="ct-arrow">&#8594;</div>
+          <div class="ct-arrow">→</div>
         </div>
       </a>
-      <a href="#health" class="cat-tile ct-health">
+      <a href="#catalog" onclick="filterCat('health')" class="cat-tile ct-health">
         <div class="cat-tile-inner">
           <div class="ct-badge">Most Popular</div>
-          <div class="ct-icon">&#127973;&#65039;</div>
+          <div class="ct-icon">🏥</div>
           <div class="ct-name">Health &amp; Medical</div>
           <div class="ct-count">AIA Med-Assist · Critical Illness</div>
-          <div class="ct-arrow">&#8594;</div>
+          <div class="ct-arrow">→</div>
         </div>
       </a>
-      <a href="#education" class="cat-tile ct-edu">
+      <a href="#catalog" onclick="filterCat('education')" class="cat-tile ct-edu">
         <div class="cat-tile-inner">
-          <div class="ct-icon">&#127891;</div>
+          <div class="ct-icon">🎓</div>
           <div class="ct-name">Education Plans</div>
           <div class="ct-count">Future Scholar &amp; More</div>
-          <div class="ct-arrow">&#8594;</div>
+          <div class="ct-arrow">→</div>
         </div>
       </a>
-      <a href="#wealth" class="cat-tile ct-wealth">
+      <a href="#catalog" onclick="filterCat('wealth')" class="cat-tile ct-wealth">
         <div class="cat-tile-inner">
-          <div class="ct-icon">&#128200;</div>
+          <div class="ct-icon">📈</div>
           <div class="ct-name">Wealth &amp; Retirement</div>
           <div class="ct-count">Investment-Linked &amp; Pension</div>
-          <div class="ct-arrow">&#8594;</div>
+          <div class="ct-arrow">→</div>
         </div>
       </a>
     </div>
   </div>
 </div>
 
-<!-- ══ ALL PRODUCTS CATALOG ══ -->
+<!-- PRODUCTS CATALOG -->
 <div class="catalog-bg">
-  <div class="section" id="catalog">
+  <div class="sec" id="catalog">
     <div class="reveal">
-      <div class="sec-eyebrow">Our Products</div>
+      <span class="sec-eyebrow">Our Products</span>
       <h2 class="sec-title">TOP SELLING <span class="hl">PLANS &amp; PRODUCTS</span></h2>
-      <p class="sec-body">All plans are powered by AIA Philippines — one of the country's most trusted insurance providers. Inquire now to get a personalized quote.</p>
+      <p class="sec-body">All plans are powered by AIA Philippines — one of the country's most trusted insurers. Tap any plan to inquire.</p>
     </div>
-
-    <!-- Filter bar — Shopify style -->
-    <div class="filter-bar reveal">
-      <span class="filter-bar-label">Filter:</span>
+    <!-- Filter tabs (horizontally scrollable on mobile) -->
+    <div class="filter-scroll reveal" id="filter-tabs">
       <div class="ftab active" onclick="filterCat('all',this)">All Plans</div>
-      <div class="ftab" onclick="filterCat('life',this)" id="life">Life Insurance</div>
-      <div class="ftab" onclick="filterCat('health',this)" id="health">Health &amp; Medical</div>
+      <div class="ftab" id="life" onclick="filterCat('life',this)">Life Insurance</div>
+      <div class="ftab" id="health" onclick="filterCat('health',this)">Health</div>
       <div class="ftab" onclick="filterCat('critical',this)">Critical Illness</div>
-      <div class="ftab" onclick="filterCat('education',this)" id="education">Education</div>
-      <div class="ftab" onclick="filterCat('wealth',this)" id="wealth">Wealth &amp; Retirement</div>
-      <select class="sort-select"><option>Featured</option><option>Best Selling</option><option>Newest</option></select>
-      <span class="product-count" id="prod-count">6 products</span>
+      <div class="ftab" id="education" onclick="filterCat('education',this)">Education</div>
+      <div class="ftab" id="wealth" onclick="filterCat('wealth',this)">Wealth &amp; Retirement</div>
     </div>
-
+    <div class="prod-count-row">
+      <span class="prod-count-label" id="prod-count">6 products</span>
+    </div>
     <div class="prod-grid reveal" id="prod-grid">
 
-      <!-- 1. AIA MED-ASSIST -->
+      <!-- AIA MED-ASSIST -->
       <div class="prod-card" data-cat="health">
-        <div class="prod-card-actions">
-          <button class="pca-btn" title="Quick View" onclick="quickInquire('AIA Med-Assist')">&#128065;</button>
-          <button class="pca-btn" title="Inquire" onclick="quickInquire('AIA Med-Assist')">&#9993;</button>
-        </div>
         <div class="prod-img">
           <div class="prod-img-visual" style="background:linear-gradient(135deg,#C62828,#7B1FA2)">
             <div class="prod-badge badge-hot">Most FAQ'd</div>
@@ -844,8 +644,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--off);color:var(--navy);ov
           </div>
         </div>
         <div class="prod-body">
-          <div class="prod-name">AIA Med-Assist powered with AIA Vitality</div>
-          <div class="prod-desc">The smarter health plan — covers hospitalizations while rewarding you for healthy living through AIA Vitality points and perks.</div>
+          <div class="prod-name">AIA Med-Assist with AIA Vitality</div>
+          <div class="prod-desc">Comprehensive health coverage that pays for hospitalizations while rewarding you for healthy living.</div>
           <ul class="prod-features">
             <li>In-patient &amp; out-patient coverage</li>
             <li>AIA Vitality wellness rewards</li>
@@ -854,21 +654,17 @@ body{font-family:'DM Sans',sans-serif;background:var(--off);color:var(--navy);ov
           </ul>
         </div>
         <div class="prod-footer">
-          <div class="prod-price"><div class="prod-price-main">Inquire Now</div><div class="prod-price-sub">Personalized quote</div></div>
-          <a href="mailto:quotation@insurancepilipinas.com?subject=Inquiry: AIA Med-Assist" class="btn-add">Add to Inquiry &#43;</a>
+          <div><div class="prod-price-main">Inquire Now</div><div class="prod-price-sub">Free Quote</div></div>
+          <a href="mailto:quotation@insurancepilipinas.com?subject=Inquiry: AIA Med-Assist" class="btn-add">Inquire +</a>
         </div>
       </div>
 
-      <!-- 2. CRITICAL PROTECT 100 -->
+      <!-- CRITICAL PROTECT 100 -->
       <div class="prod-card" data-cat="critical health">
-        <div class="prod-card-actions">
-          <button class="pca-btn" onclick="quickInquire('AIA Critical Protect 100')">&#128065;</button>
-          <button class="pca-btn" onclick="quickInquire('AIA Critical Protect 100')">&#9993;</button>
-        </div>
         <div class="prod-img">
           <div class="prod-img-visual" style="background:linear-gradient(135deg,#0B1F3A,#1A3A6B)">
             <div class="prod-badge badge-best">Best Seller</div>
-            <div class="prod-cat-chip">Critical Illness</div>
+            <div class="prod-cat-chip">Critical</div>
             <div class="pv-title">CRITICAL<br>PROTECT 100</div>
             <div class="pv-sub">Get 100% out of life</div>
             <div class="pv-logo">AIA Philippines</div>
@@ -876,26 +672,22 @@ body{font-family:'DM Sans',sans-serif;background:var(--off);color:var(--navy);ov
         </div>
         <div class="prod-body">
           <div class="prod-name">AIA Critical Protect 100</div>
-          <div class="prod-desc">Get 100% of your premiums back if you never claim. Covers 100+ critical illnesses so you can face whatever life brings.</div>
+          <div class="prod-desc">Get 100% of premiums back if you never claim. Covers 100+ critical illnesses.</div>
           <ul class="prod-features">
             <li>100% return of premiums</li>
-            <li>Covers 100+ critical illnesses</li>
-            <li>Early-stage illness covered</li>
+            <li>Covers 100+ illnesses</li>
+            <li>Early-stage covered</li>
             <li>Life benefit included</li>
           </ul>
         </div>
         <div class="prod-footer">
-          <div class="prod-price"><div class="prod-price-main">Inquire Now</div><div class="prod-price-sub">Personalized quote</div></div>
-          <a href="mailto:quotation@insurancepilipinas.com?subject=Inquiry: AIA Critical Protect 100" class="btn-add">Add to Inquiry &#43;</a>
+          <div><div class="prod-price-main">Inquire Now</div><div class="prod-price-sub">Free Quote</div></div>
+          <a href="mailto:quotation@insurancepilipinas.com?subject=Inquiry: AIA Critical Protect 100" class="btn-add">Inquire +</a>
         </div>
       </div>
 
-      <!-- 3. FUTURE SCHOLAR -->
+      <!-- FUTURE SCHOLAR -->
       <div class="prod-card" data-cat="education">
-        <div class="prod-card-actions">
-          <button class="pca-btn" onclick="quickInquire('Future Scholar')">&#128065;</button>
-          <button class="pca-btn" onclick="quickInquire('Future Scholar')">&#9993;</button>
-        </div>
         <div class="prod-img">
           <div class="prod-img-visual" style="background:linear-gradient(135deg,#1B5E20,#388E3C)">
             <div class="prod-badge badge-new">Popular</div>
@@ -907,26 +699,22 @@ body{font-family:'DM Sans',sans-serif;background:var(--off);color:var(--navy);ov
         </div>
         <div class="prod-body">
           <div class="prod-name">AIA Future Scholar Education Plan</div>
-          <div class="prod-desc">Guarantee your child's education fund no matter what. Built-in life insurance means the plan continues even if you can't.</div>
+          <div class="prod-desc">Guarantee your child's education fund no matter what happens to you.</div>
           <ul class="prod-features">
             <li>Guaranteed education fund</li>
             <li>Waiver of premium on death</li>
-            <li>Flexible payout at school milestones</li>
+            <li>Flexible payout milestones</li>
             <li>Life protection for parent</li>
           </ul>
         </div>
         <div class="prod-footer">
-          <div class="prod-price"><div class="prod-price-main">Inquire Now</div><div class="prod-price-sub">Personalized quote</div></div>
-          <a href="mailto:quotation@insurancepilipinas.com?subject=Inquiry: Future Scholar" class="btn-add">Add to Inquiry &#43;</a>
+          <div><div class="prod-price-main">Inquire Now</div><div class="prod-price-sub">Free Quote</div></div>
+          <a href="mailto:quotation@insurancepilipinas.com?subject=Inquiry: Future Scholar" class="btn-add">Inquire +</a>
         </div>
       </div>
 
-      <!-- 4. LIFE PROTECT -->
+      <!-- LIFE PROTECT -->
       <div class="prod-card" data-cat="life">
-        <div class="prod-card-actions">
-          <button class="pca-btn" onclick="quickInquire('AIA Life Insurance')">&#128065;</button>
-          <button class="pca-btn" onclick="quickInquire('AIA Life Insurance')">&#9993;</button>
-        </div>
         <div class="prod-img">
           <div class="prod-img-visual" style="background:linear-gradient(135deg,#4A148C,#7B1FA2)">
             <div class="prod-badge badge-featured">Essential</div>
@@ -938,26 +726,22 @@ body{font-family:'DM Sans',sans-serif;background:var(--off);color:var(--navy);ov
         </div>
         <div class="prod-body">
           <div class="prod-name">AIA Life Insurance Plans</div>
-          <div class="prod-desc">Comprehensive whole-life and term life coverage that financially protects your family for the long term, no matter what happens.</div>
+          <div class="prod-desc">Comprehensive whole-life and term coverage to financially protect your family.</div>
           <ul class="prod-features">
-            <li>Death &amp; total disability benefit</li>
-            <li>Investment component available</li>
-            <li>Flexible premium payment terms</li>
-            <li>Riders and add-ons available</li>
+            <li>Death &amp; disability benefit</li>
+            <li>Investment component option</li>
+            <li>Flexible premium terms</li>
+            <li>Riders available</li>
           </ul>
         </div>
         <div class="prod-footer">
-          <div class="prod-price"><div class="prod-price-main">Inquire Now</div><div class="prod-price-sub">Personalized quote</div></div>
-          <a href="mailto:quotation@insurancepilipinas.com?subject=Inquiry: Life Insurance" class="btn-add">Add to Inquiry &#43;</a>
+          <div><div class="prod-price-main">Inquire Now</div><div class="prod-price-sub">Free Quote</div></div>
+          <a href="mailto:quotation@insurancepilipinas.com?subject=Inquiry: Life Insurance" class="btn-add">Inquire +</a>
         </div>
       </div>
 
-      <!-- 5. RETIREMENT PLAN -->
+      <!-- RETIREMENT -->
       <div class="prod-card" data-cat="wealth">
-        <div class="prod-card-actions">
-          <button class="pca-btn" onclick="quickInquire('Retirement Plan')">&#128065;</button>
-          <button class="pca-btn" onclick="quickInquire('Retirement Plan')">&#9993;</button>
-        </div>
         <div class="prod-img">
           <div class="prod-img-visual" style="background:linear-gradient(135deg,#E65100,#BF360C)">
             <div class="prod-badge" style="background:var(--gold);color:var(--navy)">Top Pick</div>
@@ -969,26 +753,22 @@ body{font-family:'DM Sans',sans-serif;background:var(--off);color:var(--navy);ov
         </div>
         <div class="prod-body">
           <div class="prod-name">AIA Retirement &amp; Pension Plans</div>
-          <div class="prod-desc">Build a guaranteed income stream for your retirement so you can enjoy life with dignity, freedom, and financial peace of mind.</div>
+          <div class="prod-desc">Build guaranteed income for retirement — live with dignity and financial freedom.</div>
           <ul class="prod-features">
             <li>Guaranteed retirement income</li>
             <li>Tax-advantaged growth</li>
             <li>Customizable payout period</li>
-            <li>Optional critical illness rider</li>
+            <li>Critical illness rider available</li>
           </ul>
         </div>
         <div class="prod-footer">
-          <div class="prod-price"><div class="prod-price-main">Inquire Now</div><div class="prod-price-sub">Personalized quote</div></div>
-          <a href="mailto:quotation@insurancepilipinas.com?subject=Inquiry: Retirement Plan" class="btn-add btn-add-gold">Add to Inquiry &#43;</a>
+          <div><div class="prod-price-main">Inquire Now</div><div class="prod-price-sub">Free Quote</div></div>
+          <a href="mailto:quotation@insurancepilipinas.com?subject=Inquiry: Retirement Plan" class="btn-add btn-add-gold">Inquire +</a>
         </div>
       </div>
 
-      <!-- 6. WEALTH PLUS -->
+      <!-- WEALTH PLUS -->
       <div class="prod-card" data-cat="wealth">
-        <div class="prod-card-actions">
-          <button class="pca-btn" onclick="quickInquire('Wealth Accumulation')">&#128065;</button>
-          <button class="pca-btn" onclick="quickInquire('Wealth Accumulation')">&#9993;</button>
-        </div>
         <div class="prod-img">
           <div class="prod-img-visual" style="background:linear-gradient(135deg,#006064,#00838F)">
             <div class="prod-badge badge-new">Growth</div>
@@ -1000,298 +780,297 @@ body{font-family:'DM Sans',sans-serif;background:var(--off);color:var(--navy);ov
         </div>
         <div class="prod-body">
           <div class="prod-name">AIA Wealth Accumulation Plan</div>
-          <div class="prod-desc">Grow your money through investment-linked insurance — combining market-linked returns with life protection for serious wealth building.</div>
+          <div class="prod-desc">Grow your money through investment-linked insurance with market-linked returns.</div>
           <ul class="prod-features">
-            <li>Investment + life protection combined</li>
+            <li>Investment + life protection</li>
             <li>Market-linked fund choices</li>
             <li>Partial withdrawal allowed</li>
             <li>Premium holiday feature</li>
           </ul>
         </div>
         <div class="prod-footer">
-          <div class="prod-price"><div class="prod-price-main">Inquire Now</div><div class="prod-price-sub">Personalized quote</div></div>
-          <a href="mailto:quotation@insurancepilipinas.com?subject=Inquiry: Wealth Accumulation" class="btn-add">Add to Inquiry &#43;</a>
+          <div><div class="prod-price-main">Inquire Now</div><div class="prod-price-sub">Free Quote</div></div>
+          <a href="mailto:quotation@insurancepilipinas.com?subject=Inquiry: Wealth Accumulation" class="btn-add">Inquire +</a>
         </div>
       </div>
 
-    </div><!-- /prod-grid -->
-
-    <div style="text-align:center;margin-top:2.5rem" class="reveal">
-      <a href="mailto:quotation@insurancepilipinas.com" class="btn-dark" style="display:inline-flex">&#128203; Request Full Product Catalog</a>
+    </div>
+    <div class="catalog-more reveal">
+      <a href="mailto:quotation@insurancepilipinas.com" class="btn-dark">📋 Request Full Product Catalog</a>
     </div>
   </div>
 </div>
 
-<!-- ══ PROS & CONS ══ -->
+<!-- PROS & CONS -->
 <div class="ret-bg">
-  <div class="section">
+  <div class="sec">
     <div class="ret-header reveal">
-      <h2>IS A RETIREMENT INSURANCE PLAN <span style="color:var(--navy3)">RIGHT FOR YOU?</span></h2>
+      <h2 class="ret-h">IS A RETIREMENT PLAN <span class="hl">RIGHT FOR YOU?</span></h2>
       <span class="ret-script">Let's Weigh the Pros &amp; Cons!</span>
     </div>
-    <div class="pc-grid reveal">
+    <div class="pc-stack reveal">
       <div class="pc-col pros">
         <div class="pc-head">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
           PROS:
         </div>
         <div class="pc-body">
-          <div class="pc-row"><div class="pc-ico">✓</div><div class="pc-text"><strong>Guaranteed Retirement Income</strong><p>Predictable monthly payouts so you never outlive your money.</p></div></div>
-          <div class="pc-row"><div class="pc-ico">✓</div><div class="pc-text"><strong>Savings Discipline</strong><p>Regular contributions keep you committed and on track.</p></div></div>
-          <div class="pc-row"><div class="pc-ico">✓</div><div class="pc-text"><strong>Tax Advantages</strong><p>Tax-deferred growth accelerates your wealth-building journey.</p></div></div>
-          <div class="pc-row"><div class="pc-ico">✓</div><div class="pc-text"><strong>Customizable Riders</strong><p>Add-ons for accidents, illness, or early death at flexible cost.</p></div></div>
-          <div class="pc-row"><div class="pc-ico">✓</div><div class="pc-text"><strong>Protection + Investment</strong><p>Combines a safety net with consistent long-term savings.</p></div></div>
+          <div class="pc-row"><div class="pc-ico">✓</div><div class="pc-text"><strong>Guaranteed Retirement Income</strong><p>Predictable payouts so you never outlive your money.</p></div></div>
+          <div class="pc-row"><div class="pc-ico">✓</div><div class="pc-text"><strong>Savings Discipline</strong><p>Regular contributions keep you on track for the future.</p></div></div>
+          <div class="pc-row"><div class="pc-ico">✓</div><div class="pc-text"><strong>Tax Advantages</strong><p>Tax-deferred growth accelerates your wealth-building.</p></div></div>
+          <div class="pc-row"><div class="pc-ico">✓</div><div class="pc-text"><strong>Customizable Riders</strong><p>Add-ons for accidents, illness, or early death.</p></div></div>
+          <div class="pc-row"><div class="pc-ico">✓</div><div class="pc-text"><strong>Protection + Investment</strong><p>Safety net combined with consistent savings growth.</p></div></div>
         </div>
       </div>
       <div class="pc-col cons">
         <div class="pc-head">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           CONS:
         </div>
         <div class="pc-body">
-          <div class="pc-row"><div class="pc-ico" style="background:#FFEBEE;color:#C62828">✗</div><div class="pc-text"><strong>Lower Returns vs. Direct Investing</strong><p>May yield less than pure equity funds over long periods.</p></div></div>
-          <div class="pc-row"><div class="pc-ico" style="background:#FFEBEE;color:#C62828">✗</div><div class="pc-text"><strong>Long-Term Commitment</strong><p>Early withdrawal penalties may reduce expected benefits.</p></div></div>
-          <div class="pc-row"><div class="pc-ico" style="background:#FFEBEE;color:#C62828">✗</div><div class="pc-text"><strong>Premium Costs</strong><p>Monthly premiums can strain budgets during difficult times.</p></div></div>
-          <div class="pc-row"><div class="pc-ico" style="background:#FFEBEE;color:#C62828">✗</div><div class="pc-text"><strong>Product Complexity</strong><p>Riders and exclusions require proper guidance to understand.</p></div></div>
-          <div class="pc-row"><div class="pc-ico" style="background:#FFEBEE;color:#C62828">✗</div><div class="pc-text"><strong>Inflation Risk</strong><p>Fixed payouts may lose purchasing power over decades.</p></div></div>
+          <div class="pc-row"><div class="pc-ico" style="background:#FFEBEE;color:#C62828">✗</div><div class="pc-text"><strong>Lower Returns vs. Direct Investing</strong><p>May yield less than pure equity funds over time.</p></div></div>
+          <div class="pc-row"><div class="pc-ico" style="background:#FFEBEE;color:#C62828">✗</div><div class="pc-text"><strong>Long-Term Commitment</strong><p>Early withdrawal may reduce expected benefits.</p></div></div>
+          <div class="pc-row"><div class="pc-ico" style="background:#FFEBEE;color:#C62828">✗</div><div class="pc-text"><strong>Premium Costs</strong><p>Monthly premiums can strain tight budgets.</p></div></div>
+          <div class="pc-row"><div class="pc-ico" style="background:#FFEBEE;color:#C62828">✗</div><div class="pc-text"><strong>Product Complexity</strong><p>Riders and exclusions require proper guidance.</p></div></div>
+          <div class="pc-row"><div class="pc-ico" style="background:#FFEBEE;color:#C62828">✗</div><div class="pc-text"><strong>Inflation Risk</strong><p>Fixed payouts may lose value over decades.</p></div></div>
         </div>
       </div>
     </div>
-    <div style="text-align:center;margin-top:2.5rem" class="reveal">
-      <a href="mailto:info@insurancepilipinas.com" class="cta-primary" style="display:inline-flex">&#127775; Talk to Our Financial Advisor</a>
+    <div style="text-align:center;margin-top:1.8rem" class="reveal">
+      <a href="mailto:info@insurancepilipinas.com" class="cta-primary" style="display:inline-flex;max-width:320px">✨ Talk to Our Financial Advisor</a>
     </div>
   </div>
 </div>
 
-<!-- ══ YOUTUBE ══ -->
+<!-- YOUTUBE -->
 <div class="yt-bg">
-  <div class="section yt-inner" id="youtube">
-    <div class="reveal" style="max-width:600px;margin-bottom:2.5rem">
-      <div class="sec-eyebrow">Watch &amp; Learn</div>
-      <h2 class="sec-title">INFINITE WEALTH FINANCIALS <span class="hl">ON YOUTUBE</span></h2>
-      <p class="sec-body" style="color:rgba(255,255,255,.55)">We simplify complex AIA products into clear, easy-to-understand videos — so every Filipino can make smart, informed financial decisions.</p>
-    </div>
+  <div class="sec" id="youtube">
+    <span class="yt-eyebrow reveal">Watch &amp; Learn</span>
+    <h2 class="yt-title reveal">INFINITE WEALTH FINANCIALS <span class="hl">ON YOUTUBE</span></h2>
+    <p class="yt-body reveal">We simplify complex AIA products into clear, easy-to-understand videos — so every Filipino can make confident financial decisions.</p>
     <!-- Channel strip -->
     <div class="ch-strip reveal">
-      <div style="display:flex;align-items:center;gap:.9rem">
+      <div class="ch-row1">
         <div class="ch-avatar">IWF</div>
-        <div><div class="ch-info-name">Infinite Wealth Financials</div><div class="ch-info-handle">@infinitewealthfinancials</div></div>
+        <div>
+          <div class="ch-info-name">Infinite Wealth Financials</div>
+          <div class="ch-info-handle">@infinitewealthfinancials</div>
+        </div>
       </div>
       <div class="ch-metrics">
-        <div><div class="cm-n">12</div><div class="cm-l">Subscribers</div></div>
-        <div><div class="cm-n">32</div><div class="cm-l">Videos</div></div>
-        <div><div class="cm-n">160+</div><div class="cm-l">Views</div></div>
+        <div class="cm-card"><div class="cm-n">12</div><div class="cm-l">Subscribers</div></div>
+        <div class="cm-card"><div class="cm-n">32</div><div class="cm-l">Videos</div></div>
+        <div class="cm-card"><div class="cm-n">160+</div><div class="cm-l">Views</div></div>
       </div>
       <a href="https://www.youtube.com/@infinitewealthfinancials" target="_blank" class="btn-subscribe">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="white"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>
         Subscribe Now
       </a>
     </div>
-    <!-- Video cards -->
+    <!-- Videos -->
     <div class="vid-grid reveal">
       <a href="https://youtu.be/BpEvtzGk1PM" target="_blank" class="vid-card">
         <div class="vid-thumb" style="background:linear-gradient(135deg,#B71C1C,#7B1FA2)">
           <div class="vid-overlay"><div class="vo1">MOST FAQ'S OF</div><div class="vo2">AIA MED-ASSIST</div><div class="vo3">with AIA Vitality</div></div>
-          <div class="vid-play"><svg width="15" height="15" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg></div>
+          <div class="vid-play"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg></div>
           <div class="vid-dur">16:43</div>
         </div>
         <div class="vid-info">
           <div class="vid-title">Most FAQs of AIA Med-Assist powered with AIA Vitality</div>
-          <div class="vid-meta"><span>&#128065; 52 views</span><span>&#183; 1 year ago</span></div>
+          <div class="vid-meta"><span>👁 52 views</span><span>· 1 year ago</span></div>
           <span class="vid-chip">Health Insurance</span>
         </div>
       </a>
       <a href="https://youtu.be/VTebzO__TrQ" target="_blank" class="vid-card">
         <div class="vid-thumb" style="background:linear-gradient(135deg,#0B1F3A,#1A3A6B)">
           <div class="vid-overlay"><div class="vo1">AIA CRITICAL</div><div class="vo2">PROTECT 100</div><div class="vo3">Get 100% out of life</div></div>
-          <div class="vid-play"><svg width="15" height="15" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg></div>
+          <div class="vid-play"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg></div>
           <div class="vid-dur">18:28</div>
         </div>
         <div class="vid-info">
           <div class="vid-title">AIA Critical Protect 100 Plan Details Simplified</div>
-          <div class="vid-meta"><span>&#128065; 73 views</span><span>&#183; 2 years ago</span></div>
+          <div class="vid-meta"><span>👁 73 views</span><span>· 2 years ago</span></div>
           <span class="vid-chip">Critical Illness</span>
         </div>
       </a>
       <a href="https://youtu.be/NWJvg8hropc" target="_blank" class="vid-card">
         <div class="vid-thumb" style="background:linear-gradient(135deg,#1B5E20,#2E7D32)">
           <div class="vid-overlay"><div class="vo1">SIMPLIFIED FEATURES</div><div class="vo2">FUTURE SCHOLAR</div><div class="vo3">Education Plan</div></div>
-          <div class="vid-play"><svg width="15" height="15" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg></div>
+          <div class="vid-play"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg></div>
           <div class="vid-dur">3:49</div>
         </div>
         <div class="vid-info">
           <div class="vid-title">Simplified Features and Benefits of Future Scholar</div>
-          <div class="vid-meta"><span>&#128065; 35 views</span><span>&#183; 1 year ago</span></div>
+          <div class="vid-meta"><span>👁 35 views</span><span>· 1 year ago</span></div>
           <span class="vid-chip">Education</span>
         </div>
       </a>
       <a href="https://youtu.be/d1zqVfDnNwc" target="_blank" class="vid-card">
         <div class="vid-thumb" style="background:linear-gradient(135deg,#4A148C,#6A1B9A)">
           <div class="vid-overlay"><div class="vo1">AIA PHILIPPINES</div><div class="vo2">FINANCIAL PLANNING</div><div class="vo3">Wealth &amp; Protection Guide</div></div>
-          <div class="vid-play"><svg width="15" height="15" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg></div>
-          <div class="vid-dur">&#9654; Watch</div>
+          <div class="vid-play"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg></div>
+          <div class="vid-dur">▶</div>
         </div>
         <div class="vid-info">
           <div class="vid-title">AIA Philippines Financial Planning Guide</div>
-          <div class="vid-meta"><span>&#128065; Watch Now</span><span>&#183; Latest</span></div>
+          <div class="vid-meta"><span>👁 Watch Now</span><span>· Latest</span></div>
           <span class="vid-chip">Wealth Planning</span>
         </div>
       </a>
     </div>
-    <div style="text-align:center;margin-top:2.2rem" class="reveal">
-      <a href="https://www.youtube.com/@infinitewealthfinancials" target="_blank" class="btn-subscribe" style="padding:.75rem 2rem;font-size:.74rem">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>
-        View All 32 Videos on YouTube
+    <div class="yt-more reveal">
+      <a href="https://www.youtube.com/@infinitewealthfinancials" target="_blank" class="btn-subscribe" style="display:inline-flex;padding:.8rem 2rem;font-size:.74rem">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>
+        View All 32 Videos
       </a>
     </div>
   </div>
 </div>
 
-<!-- ══ SOCIAL HUB ══ -->
+<!-- SOCIAL HUB -->
 <div class="social-bg">
-  <div class="section" id="connect">
-    <div class="reveal" style="text-align:center;max-width:560px;margin:0 auto 2.5rem">
-      <div class="sec-eyebrow">Find Us Online</div>
-      <h2 class="sec-title" style="text-align:center">CONNECT WITH <span class="hl">INSURANCE PILIPINAS</span></h2>
-      <p class="sec-body" style="margin:0 auto">Follow us across all platforms for daily tips, product breakdowns, and free financial education.</p>
+  <div class="sec" id="connect">
+    <div class="social-header reveal">
+      <span class="sec-eyebrow">Find Us Online</span>
+      <h2 class="sec-title">CONNECT WITH <span class="hl">INSURANCE PILIPINAS</span></h2>
+      <p class="sec-body">Follow us for daily tips, product breakdowns, and free financial education.</p>
     </div>
     <div class="platforms-grid reveal">
       <a href="https://www.linkedin.com/in/insurancepilipinas" target="_blank" class="plat-card">
-        <div class="plat-ico" style="background:#0077B5"><svg width="19" height="19" viewBox="0 0 24 24" fill="white"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></div>
+        <div class="plat-ico" style="background:#0077B5"><svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></div>
         <div><span class="plat-name">LinkedIn</span><span class="plat-handle">insurancepilipinas</span></div>
       </a>
       <a href="https://www.instagram.com/insurancepilipinas" target="_blank" class="plat-card">
-        <div class="plat-ico" style="background:linear-gradient(135deg,#F09433,#E6683C,#DC2743,#CC2366,#BC1888)">
-          <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5.5" stroke="white" stroke-width="2"/><circle cx="12" cy="12" r="4.5" stroke="white" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="white"/></svg>
-        </div>
+        <div class="plat-ico" style="background:linear-gradient(135deg,#F09433,#E6683C,#DC2743,#CC2366,#BC1888)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5.5" stroke="white" stroke-width="2"/><circle cx="12" cy="12" r="4.5" stroke="white" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="white"/></svg></div>
         <div><span class="plat-name">Instagram</span><span class="plat-handle">@insurancepilipinas</span></div>
       </a>
       <a href="https://www.youtube.com/@infinitewealthfinancials" target="_blank" class="plat-card">
-        <div class="plat-ico" style="background:#FF0000"><svg width="19" height="19" viewBox="0 0 24 24" fill="white"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg></div>
+        <div class="plat-ico" style="background:#FF0000"><svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg></div>
         <div><span class="plat-name">YouTube</span><span class="plat-handle">@infinitewealthfinancials · 32 videos</span></div>
       </a>
       <a href="https://www.tiktok.com/@insurepilipinas" target="_blank" class="plat-card">
-        <div class="plat-ico" style="background:#010101"><svg width="17" height="17" viewBox="0 0 24 24" fill="white"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg></div>
+        <div class="plat-ico" style="background:#010101"><svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg></div>
         <div><span class="plat-name">TikTok</span><span class="plat-handle">@insurepilipinas</span></div>
       </a>
       <a href="https://x.com/insurepilipinas" target="_blank" class="plat-card">
-        <div class="plat-ico" style="background:#000"><svg width="17" height="17" viewBox="0 0 24 24" fill="white"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.259 5.632L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg></div>
+        <div class="plat-ico" style="background:#000"><svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.259 5.632L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg></div>
         <div><span class="plat-name">X (Twitter)</span><span class="plat-handle">@insurepilipinas</span></div>
       </a>
       <a href="mailto:info@insurancepilipinas.com" class="plat-card">
-        <div class="plat-ico" style="background:var(--navy)"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+        <div class="plat-ico" style="background:var(--navy)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
         <div><span class="plat-name">General Inquiries</span><span class="plat-handle">info@insurancepilipinas.com</span></div>
       </a>
       <a href="mailto:quotation@insurancepilipinas.com" class="plat-card">
-        <div class="plat-ico" style="background:var(--navy3)"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+        <div class="plat-ico" style="background:var(--navy3)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
         <div><span class="plat-name">Request a Quotation</span><span class="plat-handle">quotation@insurancepilipinas.com</span></div>
       </a>
     </div>
   </div>
 </div>
 
-<!-- ══ FAQS ══ -->
+<!-- FAQs -->
 <div class="faq-bg">
-  <div class="section" id="faqs">
-    <div class="reveal" style="text-align:center;max-width:560px;margin:0 auto">
-      <div class="sec-eyebrow">Got Questions?</div>
+  <div class="sec" id="faqs">
+    <div class="faq-header reveal">
+      <span class="sec-eyebrow">Got Questions?</span>
       <h2 class="sec-title" style="text-align:center">FREQUENTLY ASKED <span class="hl">QUESTIONS</span></h2>
-      <p class="sec-body" style="margin:0 auto">Everything you need to know about our products and services.</p>
     </div>
-    <div class="faq-grid reveal">
+    <div class="faq-list reveal">
       <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">What is AIA Philippines and why should I choose it?<span class="faq-ico">+</span></div>
-        <div class="faq-a">AIA Philippines is one of the country's leading and most trusted life insurance companies, with decades of financial strength, a wide product range, and innovative wellness programs like AIA Vitality. It holds one of the highest financial strength ratings in the industry.</div>
+        <div class="faq-q" onclick="toggleFaq(this)">What is AIA Philippines and why choose it?<span class="faq-ico">+</span></div>
+        <div class="faq-a">AIA Philippines is one of the country's leading life insurers with decades of financial strength, a wide product range, and innovative wellness programs like AIA Vitality. It holds one of the highest financial strength ratings in the industry.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">How do I get a personalized quotation?<span class="faq-ico">+</span></div>
-        <div class="faq-a">Simply click any "Add to Inquiry" button or email us at quotation@insurancepilipinas.com. We'll respond within 24 hours with a personalized proposal based on your needs, age, and budget. Consultations are completely free.</div>
+        <div class="faq-a">Tap any "Inquire +" button or email quotation@insurancepilipinas.com. We'll respond within 24 hours with a personalized proposal. Consultations are 100% free.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">What is AIA Med-Assist powered with AIA Vitality?<span class="faq-ico">+</span></div>
-        <div class="faq-a">AIA Med-Assist is a comprehensive health insurance plan covering both in-patient and out-patient benefits. Powered by AIA Vitality, it rewards your healthy lifestyle with discounts, cashback, and partner perks — the healthier you live, the more you save on premiums.</div>
+        <div class="faq-a">AIA Med-Assist covers in-patient and out-patient health benefits. Powered by AIA Vitality, it rewards healthy living with discounts, cashback, and perks — the healthier you live, the more you save.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">What does AIA Critical Protect 100 cover?<span class="faq-ico">+</span></div>
-        <div class="faq-a">AIA Critical Protect 100 covers over 100 critical illnesses including cancer, heart attack, and stroke across multiple stages (early, intermediate, and major). If you complete the policy without any claim, 100% of your premiums are returned. It also includes life coverage.</div>
+        <div class="faq-a">It covers 100+ critical illnesses across multiple stages (early, intermediate, major). If you complete the policy without any claim, 100% of premiums are returned. Life coverage is also included.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">What is the Future Scholar education plan?<span class="faq-ico">+</span></div>
-        <div class="faq-a">Future Scholar is an AIA education savings plan that guarantees your child's education fund even if you pass away before completing premium payments. The plan continues paying out at key educational milestones, so your child's schooling is never compromised.</div>
+        <div class="faq-a">Future Scholar guarantees your child's education fund even if you pass away before finishing premium payments. Payouts happen at key school milestones so your child's education is never compromised.</div>
       </div>
       <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Where can I watch free educational videos about these plans?<span class="faq-ico">+</span></div>
-        <div class="faq-a">Subscribe to our YouTube channel @infinitewealthfinancials where we publish free, simplified breakdowns of all AIA products. We also share tips and insights on Instagram (@insurancepilipinas), TikTok (@insurepilipinas), and LinkedIn.</div>
+        <div class="faq-q" onclick="toggleFaq(this)">Where can I watch free educational videos?<span class="faq-ico">+</span></div>
+        <div class="faq-a">Subscribe to @infinitewealthfinancials on YouTube for free breakdowns of all AIA products. We also share tips on Instagram (@insurancepilipinas), TikTok (@insurepilipinas), and LinkedIn.</div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ══ CONTACT ══ -->
+<!-- CONTACT -->
 <div class="contact-bg">
-  <div class="section" id="contact">
+  <div class="sec" id="contact">
     <div class="contact-inner reveal">
-      <div class="sec-eyebrow">Reach Out</div>
+      <span class="sec-eyebrow">Reach Out</span>
       <h2 class="sec-title">GET IN <span class="hl">TOUCH</span></h2>
-      <p class="sec-body">Whether you want a free consultation, a product quote, or just have a question — we're here for you. Every inquiry is answered personally.</p>
+      <p class="sec-body">Whether you want a consultation, a quote, or just have a question — we answer every inquiry personally.</p>
       <div class="ccards">
-        <a href="mailto:info@insurancepilipinas.com" class="ccard"><div class="ccard-icon">&#9993;</div><div class="ccard-label">General Inquiries</div><div class="ccard-val">info@insurancepilipinas.com</div></a>
-        <a href="mailto:quotation@insurancepilipinas.com" class="ccard"><div class="ccard-icon">&#128203;</div><div class="ccard-label">Request a Quote</div><div class="ccard-val">quotation@insurancepilipinas.com</div></a>
-        <a href="https://www.linkedin.com/in/insurancepilipinas" target="_blank" class="ccard"><div class="ccard-icon">&#128101;</div><div class="ccard-label">LinkedIn Profile</div><div class="ccard-val">insurancepilipinas</div></a>
+        <a href="mailto:info@insurancepilipinas.com" class="ccard"><div class="ccard-icon">✉️</div><div class="ccard-label">General Inquiries</div><div class="ccard-val">info@insurancepilipinas.com</div></a>
+        <a href="mailto:quotation@insurancepilipinas.com" class="ccard"><div class="ccard-icon">📋</div><div class="ccard-label">Request a Quote</div><div class="ccard-val">quotation@insurancepilipinas.com</div></a>
+        <a href="https://www.linkedin.com/in/insurancepilipinas" target="_blank" class="ccard"><div class="ccard-icon">👤</div><div class="ccard-label">LinkedIn Profile</div><div class="ccard-val">insurancepilipinas</div></a>
       </div>
-      <a href="mailto:info@insurancepilipinas.com" class="cta-primary" style="display:inline-flex">&#9993;&nbsp; Send Us a Message</a>
+      <a href="mailto:info@insurancepilipinas.com" class="cta-primary" style="display:flex;max-width:320px;margin:0 auto">✉ Send Us a Message</a>
     </div>
   </div>
 </div>
 
-<!-- ══ CTA STRIP ══ -->
+<!-- CTA STRIP -->
 <div class="cta-strip reveal">
-  <h2>START YOUR FINANCIAL JOURNEY WITH US TODAY</h2>
+  <h2>START YOUR FINANCIAL JOURNEY TODAY</h2>
   <p>Protect your family. Grow your wealth. Secure your future — with Insurance Pilipinas &amp; Infinite Wealth Financials.</p>
   <div class="cta-btns-row">
-    <a href="mailto:quotation@insurancepilipinas.com" class="btn-dark">&#128203; Get a Free Quote</a>
-    <a href="https://www.youtube.com/@infinitewealthfinancials" target="_blank" class="btn-outline-dark">&#9654; Watch Our Videos</a>
-    <a href="https://www.linkedin.com/in/insurancepilipinas" target="_blank" class="btn-outline-dark">Connect on LinkedIn</a>
+    <a href="mailto:quotation@insurancepilipinas.com" class="btn-dark">📋 Get a Free Quote</a>
+    <a href="https://www.youtube.com/@infinitewealthfinancials" target="_blank" class="btn-outline-dark">▶ Watch Our Videos</a>
+    <a href="https://www.linkedin.com/in/insurancepilipinas" target="_blank" class="btn-outline-dark">LinkedIn</a>
   </div>
 </div>
 
-<!-- ══ FOOTER ══ -->
+<!-- FOOTER -->
 <div class="footer-top-bar"></div>
-<div style="background:var(--navy)">
-  <div class="footer-main">
-    <div>
-      <div class="ft-brand-name">Insurance Pilipinas &nbsp;·&nbsp; Infinite Wealth Financials</div>
-      <div class="ft-brand-sub">@insurancepilipinas &nbsp;·&nbsp; @infinitewealthfinancials &nbsp;·&nbsp; Philippines</div>
-      <div class="ft-brand-desc">Your trusted AIA Philippines partner for insurance, financial planning, and free educational content. Protecting the dreams of every Filipino family — one plan at a time.</div>
-    </div>
-    <div class="ft-col">
-      <h4>Our Plans</h4>
+<div class="footer-main">
+  <div>
+    <div class="ft-brand-name">Insurance Pilipinas · Infinite Wealth Financials</div>
+    <div class="ft-brand-sub">@insurancepilipinas · @infinitewealthfinancials · Philippines</div>
+    <div class="ft-brand-desc">Your trusted AIA Philippines partner for insurance, financial planning, and free educational content. Protecting the dreams of every Filipino family.</div>
+  </div>
+  <div class="ft-col">
+    <div class="ft-col-header" onclick="toggleFtCol(this)"><h4>Our Plans</h4><span class="ft-col-arrow">▾</span></div>
+    <div class="ft-col-links">
       <a href="#life">Life Insurance</a>
       <a href="#health">Health &amp; Medical</a>
-      <a href="#critical">Critical Illness</a>
       <a href="#education">Education Plans</a>
       <a href="#wealth">Wealth &amp; Retirement</a>
     </div>
-    <div class="ft-col">
-      <h4>Connect</h4>
+  </div>
+  <div class="ft-col">
+    <div class="ft-col-header" onclick="toggleFtCol(this)"><h4>Connect</h4><span class="ft-col-arrow">▾</span></div>
+    <div class="ft-col-links">
       <a href="https://www.linkedin.com/in/insurancepilipinas" target="_blank">LinkedIn</a>
       <a href="https://www.instagram.com/insurancepilipinas" target="_blank">Instagram</a>
       <a href="https://www.youtube.com/@infinitewealthfinancials" target="_blank">YouTube</a>
       <a href="https://www.tiktok.com/@insurepilipinas" target="_blank">TikTok</a>
       <a href="https://x.com/insurepilipinas" target="_blank">X (Twitter)</a>
     </div>
-    <div class="ft-col">
-      <h4>Help</h4>
+  </div>
+  <div class="ft-col">
+    <div class="ft-col-header" onclick="toggleFtCol(this)"><h4>Help</h4><span class="ft-col-arrow">▾</span></div>
+    <div class="ft-col-links">
       <a href="#faqs">FAQs</a>
       <a href="#contact">Contact Us</a>
       <a href="#youtube">Watch &amp; Learn</a>
       <a href="mailto:quotation@insurancepilipinas.com">Get a Quote</a>
-      <a href="mailto:info@insurancepilipinas.com">General Inquiries</a>
     </div>
   </div>
 </div>
-<div class="footer-bottom" style="background:var(--navy)">
-  <div class="footer-copy">&#169; 2025 Insurance Pilipinas &amp; Infinite Wealth Financials. All rights reserved. AIA Philippines Authorized Partner.</div>
+<div class="footer-bottom">
+  <div class="footer-copy">© 2025 Insurance Pilipinas &amp; Infinite Wealth Financials. All rights reserved. AIA Philippines Authorized Partner.</div>
   <div class="footer-bottom-links">
     <a href="#faqs">FAQs</a>
     <a href="#contact">Contact</a>
@@ -1300,57 +1079,92 @@ body{font-family:'DM Sans',sans-serif;background:var(--off);color:var(--navy);ov
   </div>
 </div>
 
-<!-- INQUIRY TOAST -->
-<div id="toast" style="display:none;position:fixed;bottom:2rem;right:2rem;background:var(--navy);color:var(--gold);padding:1rem 1.5rem;border-radius:10px;font-size:.82rem;font-weight:700;z-index:9999;box-shadow:var(--shadow-lg);border:1px solid var(--gold);max-width:320px"></div>
+<!-- FIXED BOTTOM CTA BAR (mobile only) -->
+<div class="bottom-cta-bar">
+  <a href="mailto:quotation@insurancepilipinas.com" class="bcta-btn bcta-primary">📋 Get a Quote</a>
+  <a href="https://www.youtube.com/@infinitewealthfinancials" target="_blank" class="bcta-btn bcta-yt">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>
+    YouTube
+  </a>
+</div>
+
+<!-- TOAST -->
+<div id="toast"></div>
 
 <script>
 // ── Scroll reveal ──
-const revEls=document.querySelectorAll('.reveal');
-const revObs=new IntersectionObserver(entries=>{
-  entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('in'),i*60);revObs.unobserve(e.target)}})
-},{threshold:.07});
-revEls.forEach(el=>revObs.observe(el));
+const revEls = document.querySelectorAll('.reveal');
+const revObs = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) { setTimeout(() => e.target.classList.add('in'), i * 55); revObs.unobserve(e.target); }
+  });
+}, { threshold: .06 });
+revEls.forEach(el => revObs.observe(el));
+
+// ── Hamburger / Drawer ──
+const hamburger = document.getElementById('hamburger');
+const drawer = document.getElementById('drawer');
+function openDrawer() { hamburger.classList.add('open'); drawer.classList.add('open'); document.body.style.overflow = 'hidden'; }
+function closeDrawer() { hamburger.classList.remove('open'); drawer.classList.remove('open'); document.body.style.overflow = ''; }
+hamburger.addEventListener('click', () => drawer.classList.contains('open') ? closeDrawer() : openDrawer());
 
 // ── Active nav link ──
-const sections=document.querySelectorAll('[id]');
-const navLinks=document.querySelectorAll('.nav-menu a');
-window.addEventListener('scroll',()=>{
-  let cur='';
-  sections.forEach(s=>{if(window.scrollY>=s.offsetTop-100)cur=s.id});
-  navLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+cur)});
-},{ passive:true });
+const sections = document.querySelectorAll('[id]');
+const navLinks = document.querySelectorAll('.nav-menu a, .drawer-nav a');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) cur = s.id; });
+  navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + cur));
+}, { passive: true });
 
 // ── Product filter ──
-function filterCat(cat,el){
-  document.querySelectorAll('.ftab').forEach(t=>t.classList.remove('active'));
-  if(el)el.classList.add('active');
-  const cards=document.querySelectorAll('.prod-card');
-  let count=0;
-  cards.forEach(c=>{
-    const cats=c.dataset.cat||'';
-    const show=cat==='all'||cats.split(' ').includes(cat);
-    c.style.display=show?'flex':'none';
-    if(show)count++;
+function filterCat(cat, el) {
+  document.querySelectorAll('.ftab').forEach(t => t.classList.remove('active'));
+  if (el) el.classList.add('active');
+  else {
+    document.querySelectorAll('.ftab').forEach(t => {
+      if (t.textContent.toLowerCase().includes(cat) || (cat === 'all' && t.textContent.includes('All'))) t.classList.add('active');
+    });
+  }
+  const cards = document.querySelectorAll('.prod-card');
+  let count = 0;
+  cards.forEach(c => {
+    const cats = (c.dataset.cat || '').split(' ');
+    const show = cat === 'all' || cats.includes(cat);
+    c.style.display = show ? 'flex' : 'none';
+    if (show) count++;
   });
-  const pc=document.getElementById('prod-count');
-  if(pc)pc.textContent=count+' product'+(count!==1?'s':'');
+  const pc = document.getElementById('prod-count');
+  if (pc) pc.textContent = count + ' product' + (count !== 1 ? 's' : '');
+  // scroll to catalog
+  document.getElementById('catalog')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-// ── Quick inquire toast ──
-function quickInquire(name){
-  const toast=document.getElementById('toast');
-  toast.textContent='✓ Inquiry added: '+name+' — We\'ll reach out within 24hrs!';
-  toast.style.display='block';
-  setTimeout(()=>{toast.style.display='none'},3500);
+// ── FAQ ──
+function toggleFaq(el) {
+  const item = el.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(f => { f.classList.remove('open'); f.querySelector('.faq-ico').textContent = '+'; });
+  if (!isOpen) { item.classList.add('open'); el.querySelector('.faq-ico').textContent = '−'; }
 }
 
-// ── FAQ accordion ──
-function toggleFaq(el){
-  const item=el.closest('.faq-item');
-  const isOpen=item.classList.contains('open');
-  document.querySelectorAll('.faq-item').forEach(f=>{f.classList.remove('open');f.querySelector('.faq-ico').textContent='+'});
-  if(!isOpen){item.classList.add('open');el.querySelector('.faq-ico').textContent='−'}
+// ── Footer cols (mobile collapsible) ──
+function toggleFtCol(header) {
+  if (window.innerWidth >= 900) return;
+  const col = header.closest('.ft-col');
+  col.classList.toggle('open');
 }
+
+// ── Toast ──
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.display = 'block';
+  setTimeout(() => t.style.display = 'none', 3200);
+}
+
+// ── Desktop login button ──
+if (window.innerWidth >= 900) document.getElementById('desktop-login').style.display = 'inline-block';
 </script>
 </body>
 </html>
